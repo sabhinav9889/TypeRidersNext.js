@@ -2,7 +2,7 @@
 import {useState, useEffect, useRef} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarSide, faXmark ,faSailboat, faMotorcycle, faTruck, faEye, faEyeSlash, faHorse, faTractor, faBiking } from "@fortawesome/free-solid-svg-icons";
-const Car = ({per:number, spin:number})=>{
+const Car = ({per:number, spin:boolean})=>{
     // const speed = Math.max(2, 70-per);
     if(per>=192) per = 192;
     const [wid, setWid] = useState(null);
