@@ -31,8 +31,10 @@ const Profile = () => {
         setPhoto(URL.createObjectURL(file)); 
 
         /** Reset file input */
-        e.currentTarget.type = "text";
-        e.currentTarget.type = "file";
+        if(e.currentTarget){
+            e.currentTarget.type = "text";
+            e.currentTarget.type = "file";
+       }
         
     }
     return(

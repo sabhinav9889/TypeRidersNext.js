@@ -5,7 +5,8 @@ import { faPalette, faClock, faBarsProgress, faKeyboard, faAddressCard} from "@f
 import { messageData } from "./context";
 
 const HomePage = () => {
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = useContext(messageData);
+    const contextValue = useContext(messageData);
+    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = contextValue!;
     const [selectTheme, setSelectedTheme] = useState(false);
     const headr = useRef(null);
     const currDiv = headr.current;
