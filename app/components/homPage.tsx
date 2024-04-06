@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPalette, faClock, faBarsProgress, faKeyboard, faAddressCard} from "@fortawesome/free-solid-svg-icons";
 import { messageData } from "./context";
 
-const HomePage = ()=>{
+const HomePage = () => {
     const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = useContext(messageData);
     const [selectTheme, setSelectedTheme] = useState(false);
     const headr = useRef(null);

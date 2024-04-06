@@ -1,10 +1,10 @@
 "use client"
 import SinglePlayer from "./components/soloPlay";
 import HomePage from "./components/homPage";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef} from "react";
 import {messageData} from "./components/context";
 import Profile from "./components/profile";
-import Footer from "./components/footer";
+// import Footer from "./components/footer";
 // import Car from "./components/car";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faGithub} from "@fortawesome/free-solid-svg-icons";

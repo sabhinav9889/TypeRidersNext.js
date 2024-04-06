@@ -6,7 +6,6 @@ const profile = () => {
     const avgWpm = 58;
     const avgAccuracy = 92;
     const bestWpm = 86;
-    const bestAccuracy = 100;
     const matchPlayed = 128;
     const [change, setchange] = useState(0);
     const [File, setFile] = useState(null);
@@ -15,7 +14,7 @@ const profile = () => {
         const fileInput = e.target as HTMLInputElement;
 
         if (!fileInput.files || fileInput.files.length === 0) {
-            alert("Files list is empty");
+            // alert("Files list is empty");
             return;
         }
     
@@ -23,7 +22,7 @@ const profile = () => {
     
         /** File validation */
         if (!file.type.startsWith("image")) {
-            alert("Please select a valide image");
+            // alert("Please select a valide image");
             return;
         }
     

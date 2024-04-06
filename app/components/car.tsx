@@ -5,10 +5,13 @@ import { faCarSide, faXmark ,faSailboat, faMotorcycle, faTruck, faEye, faEyeSlas
 const Car = ({per, spin})=>{
     // const speed = Math.max(2, 70-per);
     if(per>=192) per = 192;
-    const [wid, setWid] = useState(null);
+    const [wid, setWid] = useState(0);
     const [garage, showGarage] = useState(false);
     const getWidth  =  useRef(null);
-    if(getWidth.current&&wid===null) setWid(getWidth.current.getBoundingClientRect().width);
+    if(getWidth.current&&wid===0){ 
+        const element = getWidth.current as HTMLElement;
+        setWid(Number(element.offsetWidth));
+    }
     // if(getWidth.current) console.log(getWidth.current.getBoundingClientRect());
     const [carIc, setCarIc ] = useState(0);
     const [hide, setHide] = useState(false);
