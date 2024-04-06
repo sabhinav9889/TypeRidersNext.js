@@ -11,7 +11,8 @@ import Profile from "./components/profile";
 
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);
-  const {theme, setTheme, diff, start, setStart} = useContext(messageData);
+  const contextValue = useContext(messageData);
+  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = contextValue!;
   if(themeSet.current){
     if(theme===0){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.add("bg-black"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
     else if(theme===1){ themeSet.current.classList.remove("bg-black"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-gray-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100");}
