@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-const profile = () => {
+const Profile = () => {
     const userName = "CamLoT";
     const userEmail = "sabhinav@gmail.com";
     const avgWpm = 58;
@@ -66,4 +66,4 @@ const profile = () => {
     )
 }
 
-export default profile;
+export default Profile;
