@@ -4,22 +4,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faRotateRight} from "@fortawesome/free-solid-svg-icons";
 import { messageData } from "./context";
 import Car from "./car";
+import MusicPlayer from "./musicPlayer";
+import Graph from './graph';
+import Profile from "./profile";
 const SinglePlayer = () => {
   const punct = "The sun, a fiery orb in the sky; blazed relentlessly—its rays, scorching everything in their path, made the earth beneath shimmer with heat waves. Mirages appearing like tantalizing illusions; teasing the weary traveler's senses. Birds, seeking refuge from the intense heat, sought shelter amidst the dense foliage. Their chirps—a symphony of survival—echoing through the sweltering air. Clouds, wispy and ethereal, drifted lazily across the azure expanse; casting fleeting shadows upon the parched land below! The wind, a gentle caress at first, gradually escalated into a fierce gale—whipping through the landscape with wild abandon, stirring up dust devils in its wake: trees, their branches swaying in a frantic dance, creaked and groaned under the relentless assault. Animals, instinctively attuned to the rhythms of nature, hunkered down in their burrows;";
   const numPara = "In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see.";
   const coding = `if (userSelection.equals("attack")) { enemyHealth -= weapon.getDamage(); for (int i = 0; i < enemyAttacks.length; i++) { if (Math.random() < enemyAttacks[i].getAccuracy()) { playerHealth -= enemyAttacks[i].getDamage(); System.out.println("Enemy " + enemyAttacks[i].getName() + " hits you for " + enemyAttacks[i].getDamage() + " damage!"); } else { System.out.println("Enemy " + enemyAttacks[i].getName() + " misses!"); } } } else if (userSelection.equals("heal")) { if (playerHealth + potion.getHealAmount() <= playerMaxHealth) { playerHealth += potion.getHealAmount(); } else { playerHealth = playerMaxHealth; } System.out.println("You heal for " + potion.getHealAmount() + " health points!"); } else { System.out.println("Invalid selection. Please choose 'attack' or 'heal'."); } while (playerHealth > 0 && enemyHealth > 0) { // Continue the combat loop... }`;
   const simple = "orange pen queen rat sun table, umbrella van watch xylophone yo-yo zoo ant bear cup desk elephant frog grape house ice jar kite lemon map nail owl pear quill rabbit snake tree unicorn violin window yarn zipper. In a quaint little village nestled amidst rolling hills and lush greenery, there lived a curious young boy named Timothy, whose days were filled with wonder and adventure. From the moment he opened his eyes in the morning to the time he drifted off to sleep at night, Timothy's imagination soared to new heights, fueled by the endless possibilities that surrounded him.";
   const contextValue = useContext(messageData);
-  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = contextValue!;
+  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic} = contextValue!;
   let words = "";
   if(diff===0) words = simple;
   else if(diff==1) words =punct;
   else if(diff==2) words =numPara;
   else words =coding;
-  let lis = words.split(" ");
+  // let lis = words.split(" ");
   let wordComp = words;
   const text = useRef(null);
-  let dur = countDown;
+  // let dur = countDown;
   const [passage, setPassage] = useState<React.ReactNode[] | null>([]);
   const [cursor, setCursor] = useState<number>(0);
   const [change, setchange] = useState(0);
@@ -37,13 +40,17 @@ const SinglePlayer = () => {
   const [wpm, setWpm] = useState(0);
   const [blur, setBlur] = useState(1);
   const [spin, setSpin] = useState(false);
+  const [wpmList, setWpmList] = useState<number[]>([]);
+  const [graph, setGraph] = useState<number[]>([]);
   const handleRefresh = ()=>{
     setCountKey(0);
     setScore(-1);
     setCorrect(0);
     setSeconds(countDown);
+    setWpmList([]);
     setWrongScore(0);
     setIsWrong((st)=>{ st.clear(); return st; });
+    setGraph([]);
     setLastIdx(0);
     setWpm(0);
     setBlur(1);
@@ -75,6 +82,10 @@ const SinglePlayer = () => {
         }
       }, 1000);
       setWpm((correct/(countDown-seconds)*60));
+      if(!isNaN(wpm)&&wpm){ 
+        setGraph((prev)=>[...prev, countDown-seconds]);
+        setWpmList((prev)=>[...prev, wpm]);
+      }
       if(seconds===0){
         const accuracy = ((countKey-wrongScore)/countKey)*100;
         const getIdx = cursor;
@@ -227,6 +238,7 @@ const SinglePlayer = () => {
     }
     setchange(change+1);
   };
+  
   return (
     <div className="w-full min-h-screen select-none" onKeyDown={(eve)=>handleKeyDown(eve)} tabIndex={0}>
       <div className="flex justify-center items-center">
@@ -252,19 +264,23 @@ const SinglePlayer = () => {
         </div>}
         {(score!==-1)?
           <div className="">
-            <div className=" mt-32 text-orange-300 mb-4"><p className="p-4 text-2xl flex justify-center">Accuracy - {score.toFixed(2)} %</p><p className="p-4 text-2xl flex justify-center">WPM - {wpm.toFixed(2)}</p></div>
-            <div className="flex mt-8 justify-center text-black">
-            <button
-              className="p-1 text-orange-400 select-none"
-              onClick={() => handleRefresh()}
-            >
-              <FontAwesomeIcon icon={faRotateRight} size="xl"/>
-            </button>
+            <div className="absolute z-40 top-96 mt-16 left-96 ml-48">
+              <div className="flex text-orange-300 mb-4"><p className="p-4 text-2xl justify-center">Accuracy - {score.toFixed(2)} %</p><p className="p-4 text-2xl flex justify-center">WPM - {wpm.toFixed(2)}</p></div>
+              <div className="flex justify-center text-black">
+            </div>
           </div>
+          <Graph wpmList={wpmList} graph={graph}/>
+          <button
+                className="p-1 text-orange-400 select-none absolute top-80 mt-48"
+                onClick={() => handleRefresh()} 
+              >
+                <FontAwesomeIcon icon={faRotateRight} size="xl"/>
+            </button>
           </div>:<></>
-        }
+        } 
       </div>
-      <Car per={wpm} spin={spin}/>
+      <Car per={wpm.toFixed(2)} spin={spin}/>
+      {(music)&&<MusicPlayer/>}
     </div>
   );
 };

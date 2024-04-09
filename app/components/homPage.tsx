@@ -1,15 +1,15 @@
 "use client"
 import { useState,useContext, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPalette, faClock, faBarsProgress, faKeyboard, faAddressCard} from "@fortawesome/free-solid-svg-icons";
+import { faPalette, faClock, faBarsProgress, faKeyboard, faAddressCard, faMusic} from "@fortawesome/free-solid-svg-icons";
 import { messageData } from "./context";
 
 const HomePage = () => {
     const contextValue = useContext(messageData);
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = contextValue!;
+    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic} = contextValue!;
     const [selectTheme, setSelectedTheme] = useState(false);
-    const headr = useRef(null);
-    const currDiv = headr.current;
+    // const headr = useRef(null);
+    // const currDiv = headr.current;
     let MyTheme = "bg-zinc-800";
         if(theme===0){ 
             MyTheme = "bg-zinc-800";
@@ -28,7 +28,7 @@ const HomePage = () => {
         }
         else if(theme===5){ 
             MyTheme = "bg-pink-800";
-         }
+        }
     return(
         <div className="w-full absolute select-none hidden lg:block font-mono">   
         {(begin)?<div className="p-3 flex"><FontAwesomeIcon icon={faKeyboard} size="xl" /><p className="pl-4">TypeRiders</p></div>:<></>}
@@ -42,14 +42,15 @@ const HomePage = () => {
                     {(diff===2)?<p className="pt-3 p-2 text-lg text-white">Numbers</p>:<p className="pt-3 p-2  text-lg text-orange-200" onClick={()=>setDiff(2)}>Numbers</p>}
                     {(diff===3)?<p className="pt-3 p-2 text-lg text-white">Coding</p>:<p className="pt-3 p-2 text-lg text-orange-200" onClick={()=>setDiff(3)}>Coding</p>}
                 </div>
-                <div className="flex col-span-3">
+                <div className="flex col-span-2">
                     <p className="p-3 text-lg text-amber-300"><FontAwesomeIcon icon={faClock} /></p>
                     {(countDown===15)?<p className="pt-3 p-2 text-lg text-white">15</p>:<p className="pt-3 p-2 text-lg text-orange-200" onClick={()=>setCountDown(15)}>15</p>}
                     {(countDown===30)?<p className="pt-3 p-2 text-lg text-white">30</p>:<p className="pt-3 p-2 text-lg text-orange-200" onClick={()=>setCountDown(30)}>30</p>}
                     {(countDown===60)?<p className="pt-3 p-2 text-lg text-white">60</p>:<p className="pt-3 p-2 text-lg text-orange-200" onClick={()=>setCountDown(60)}>60</p>}
                     {(countDown===100)?<p className="pt-3 p-2 text-lg text-white">100</p>:<p className="pt-3 p-2 text-lg text-orange-200" onClick={()=>setCountDown(100)}>100</p>}
                 </div>
-              {(diff===4)?<div className="mt-3 ml-9 text-white flex col-span-2"><FontAwesomeIcon icon={faAddressCard} size="xl" /><p className="ml-2">Profile</p></div>:<div className="mt-3 ml-9 text-orange-300 flex" onClick={()=>setDiff(4)}><FontAwesomeIcon icon={faAddressCard} size="xl" /><p className="ml-2">Profile</p></div>}
+              {(diff===4)?<div className="mt-3 ml-9 text-white flex col-span-2"><FontAwesomeIcon icon={faAddressCard} size="xl" /><p className="ml-2">Profile</p></div>:<div className="mt-3 ml-9 text-orange-300 flex col-span-2" onClick={()=>setDiff(4)}><FontAwesomeIcon icon={faAddressCard} size="xl" /><p className="ml-2">Profile</p></div>}
+              <div className={`col-span-1 p-2  mt-1 w-24 ${(music)?'text-white':''}`}><p onClick={()=>setMusic((music)?false:true)}>Music<FontAwesomeIcon icon={faMusic} className="ml-2" /></p></div>
               <div className="col-span-1 absolute z-10 right-4">
                   <div className="p-2" onClick={()=>setSelectedTheme((selectTheme)?false:true)}>
                      <FontAwesomeIcon icon={faPalette} className="text-white mt-2.5 ml-1" size="lg"/>
