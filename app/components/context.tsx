@@ -22,7 +22,7 @@ interface ValueProps {
 
 // Step 3: Create the context provider component
 const Context: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState<number>(3);
+    const [theme, setTheme] = useState<number>(2);
     const [countDown, setCountDown] = useState<number>(15);
     const [diff, setDiff] = useState<number>(0);
     const [begin, setBegin] = useState<boolean>(false);

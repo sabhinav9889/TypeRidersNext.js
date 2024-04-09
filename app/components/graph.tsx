@@ -1,9 +1,8 @@
 "use client"
 import { useEffect, useState } from "react";
 import { Chart } from "chart.js";
-function Example({wpmList, graph}) {
+function Example({wpmList, graph}:any) {
   // const [wpmList, setWpmList] = useState<number[]>([]);
-  console.log(wpmList);
   // const [labList, setlabList] = useState<number[]>([]);
   const lis: number[] = new Array<number>(wpmList.length).fill(0);
   const temp: number[] = new Array<number>(wpmList.length).fill(0);

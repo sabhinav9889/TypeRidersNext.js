@@ -23,7 +23,7 @@ export default function Home() {
     else if(theme===5){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-black"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-pink-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
   }
   return (
-      <main className={`${(!start)?'bg-covers bg-center':' bg-slate-900'} text-gray-100 min-h-screen`} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>
+      <main className={`${(!start)?'bg-covers bg-center':' bg-orange-900'} text-gray-100 min-h-screen`} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>
         {(! start)&&
         <div className="w-full flex justify-center">
           <div className="mt-40">

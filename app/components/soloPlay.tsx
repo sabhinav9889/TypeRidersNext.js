@@ -271,7 +271,7 @@ const SinglePlayer = () => {
           </div>
           <Graph wpmList={wpmList} graph={graph}/>
           <button
-                className="p-1 text-orange-400 select-none absolute top-80 mt-48"
+                className="p-1 text-orange-400 select-none absolute top-80 mt-48 z-50"
                 onClick={() => handleRefresh()} 
               >
                 <FontAwesomeIcon icon={faRotateRight} size="xl"/>
