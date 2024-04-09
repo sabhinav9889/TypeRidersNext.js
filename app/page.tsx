@@ -3,6 +3,7 @@ import SinglePlayer from "./components/soloPlay";
 import HomePage from "./components/homPage";
 import { useContext, useRef} from "react";
 import {messageData} from "./components/context";
+import Head from "next/head";
 import Profile from "./components/profile";
 import MusicPlayer from "./components/musicPlayer";
 // import Footer from "./components/footer";
@@ -24,6 +25,9 @@ export default function Home() {
   }
   return (
       <main className={`${(!start)?'bg-covers bg-center':' bg-orange-900'} text-gray-100 min-h-screen`} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         {(! start)&&
         <div className="w-full flex justify-center">
           <div className="mt-40">

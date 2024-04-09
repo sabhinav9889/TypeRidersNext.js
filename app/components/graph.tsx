@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Chart } from "chart.js";
 function Example({wpmList, graph}:any) {
   // const [wpmList, setWpmList] = useState<number[]>([]);
@@ -9,8 +9,9 @@ function Example({wpmList, graph}:any) {
   for(let i = 0; i <wpmList.length; i++){
     lis[i] = i+1;
   }
+  const myChart = useRef(null);
   useEffect(() => {
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = myChart.current.getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -37,7 +38,7 @@ function Example({wpmList, graph}:any) {
       {/* <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">line Chart</h1>
       <div className="w-[1100px] h-screen flex mx-auto my-auto">
         <div className='border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl'> */}
-          <canvas id='myChart'></canvas>
+          <canvas ref={myChart}></canvas>
         {/* </div>
       </div> */}
     </div>
