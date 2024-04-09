@@ -9,28 +9,31 @@ function Example({wpmList, graph}:any) {
   for(let i = 0; i <wpmList.length; i++){
     lis[i] = i+1;
   }
-  const myChart = useRef(null);
+  const myChartDiv = useRef(null);
   useEffect(() => {
-    var ctx = myChart.current.getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: graph,
-        datasets: [{
-          data: wpmList,
-          label: "WPM",
-          borderColor: "#3e95cd",
-          backgroundColor: "#7bb6dd",
-          fill: false,
+    if(myChartDiv&&myChartDiv.current){
+      if(!myChartDiv.current.getContext('2d')) return;
+      const ctx = myChartDiv.current.getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: graph,
+          datasets: [{
+            data: wpmList,
+            label: "WPM",
+            borderColor: "#3e95cd",
+            backgroundColor: "#7bb6dd",
+            fill: false,
+          },
+          {
+            data: temp,
+            label: "Time",
+            fill: false,
+          }
+          ]
         },
-        {
-          data: temp,
-          label: "Time",
-          fill: false,
-        }
-        ]
-      },
-    });
+      });
+   }
   }, [wpmList]);
   return (
     <div className="w-1/2 h-80 absolute top-16 left-56 ml-44">
@@ -38,7 +41,7 @@ function Example({wpmList, graph}:any) {
       {/* <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">line Chart</h1>
       <div className="w-[1100px] h-screen flex mx-auto my-auto">
         <div className='border border-gray-400 pt-0 rounded-xl  w-full h-fit my-auto  shadow-xl'> */}
-          <canvas ref={myChart}></canvas>
+          <canvas ref={myChartDiv}></canvas>
         {/* </div>
       </div> */}
     </div>
