@@ -62,7 +62,7 @@ const Car = ({per, spin}:any)=>{
                         <p className="">200 WPM</p>
                     </div>
             </div>
-            <div className="mt-12  hidden">
+            <div className="mt-12 flex">
                <button className="sm:text-xl text-sm pl-1 pr-1 h-10 text-orange-300" onClick={()=>showGarage((garage)?false:true)}>Garage {'>'} </button>
                {(garage)&&
                 <div className="flex ml-4 cursor-pointer">
