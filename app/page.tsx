@@ -1,10 +1,11 @@
 "use client"
 import SinglePlayer from "./components/soloPlay";
-import HomePage from "./components/homPage";
+import HomePage from "./components/upperNav";
 import { useContext, useRef} from "react";
 import {messageData} from "./components/context";
 import Head from "next/head";
-import Profile from "./components/profile";
+import DownNav from "./components/downNav";
+// import Profile from "./components/profile";
 import MusicPlayer from "./components/musicPlayer";
 // import Footer from "./components/footer";
 // import Car from "./components/car";
@@ -36,9 +37,9 @@ export default function Home() {
           </div>
         </div>}
         {(start)&&<><HomePage/>
-        {(diff!==4)&&<SinglePlayer/>}
-        {(diff===4)&&<Profile/>}</>}
-        {/* <Profile/> */}
+        <SinglePlayer/>
+        {(!begin)&&<DownNav/>}
+        </>}
       </main>
   );
 }

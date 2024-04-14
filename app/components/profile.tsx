@@ -39,7 +39,7 @@ const Profile = () => {
         
     // }
     return(
-        <div className="">
+        <div className="hidden sm:block">
             <div className="w-full flex justify-center font-mono text-lg">
                 <div className="p-24">
                     <div  className="flex justify-center">

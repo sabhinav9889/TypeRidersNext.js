@@ -1,12 +1,10 @@
 "use client"
 import { Spotify } from "react-spotify-embed";
-// import { useEffect, useRef} from "react";
 
 const MusicPlayer = () => {
     return(
-        <div className={'w-80 h-40 overflow-hidden absolute right-0 top-80'}>
-              <Spotify link="https://open.spotify.com/playlist/7ld7q89dE5etlqq60XTiVy?si=6b76321167954bd2" className="h-40 absolute z-10"/>
-        </div>
+        
+        <Spotify link="https://open.spotify.com/playlist/7ld7q89dE5etlqq60XTiVy?si=6b76321167954bd2" className="h-40 absolute z-10"/>
     )
 }
 

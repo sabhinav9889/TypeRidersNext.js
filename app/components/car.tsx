@@ -1,7 +1,7 @@
 "use client"
-import {useState, useEffect, useRef} from "react";
+import {useState,  useRef} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCarSide, faXmark ,faSailboat, faMotorcycle, faTruck, faEye, faEyeSlash, faHorse, faTractor, faBiking } from "@fortawesome/free-solid-svg-icons";
+import { faCarSide, faSailboat, faMotorcycle, faTruck, faEye, faEyeSlash, faHorse, faTractor, faBiking } from "@fortawesome/free-solid-svg-icons";
 const Car = ({per, spin}:any)=>{
     // const speed = Math.max(2, 70-per);
     if(per>=192) per = 192;
@@ -23,13 +23,14 @@ const Car = ({per, spin}:any)=>{
     else if(carIc===5) car = faHorse;
     else if(carIc===6) car = faTruck;
     return(
-        <div className="absolute w-full z-10 top-96 mt-40" ref={getWidth}>
+        <div className="absolute w-full z-10 top-80 sm:top-96 sm:mt-28" ref={getWidth}>
+
           {(hide)&&<div className="ml-2 cursor-pointer" onClick={()=>setHide((hide)?false:true)}><FontAwesomeIcon icon={faEye}></FontAwesomeIcon></div>}
         {(!hide)&&<div>
             <div className="flex">
                <div className="ml-2 cursor-pointer" onClick={()=>setHide((hide)?false:true)}><FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon></div><p className="ml-2">WPM : {per }</p>
             </div>
-            <div className="mt-2 text-3xl">
+            <div className="mt-2 text-sm  sm:text-3xl">
                 <div className="flex pl-1"><FontAwesomeIcon icon={car} size="2xl" className={`text-orange-400  ${(spin)?'animate-spin':'animate-bounce'} `} style={{marginLeft:`${wid*((per)/200)}px`}}/></div>
             </div>
             <hr className="w-full"/>
@@ -44,43 +45,47 @@ const Car = ({per, spin}:any)=>{
                         <p className="flex justify-center">50 WPM</p>
                     </div>
                 </div>
-                    <div className="absolute left-1/2">
+                    <div className={`absolute left-1/2`}>
                         <p className="flex justify-center">^</p>
                         <p className="flex justify-center">100 WPM</p>
                     </div>
-                    <div className="absolute left-3/4">
+                    {/* <div className={`absolute sm:hidden right-0`}>
+                        <p className="flex justify-center">^</p>
+                        <p className="flex justify-center">100 WPM</p>
+                    </div> */}
+                    <div className="absolute left-3/4"> 
                         <p className="flex justify-center">^</p>
                         <p className="flex justify-center">150 WPM</p>
                     </div>
-                    <div className="absolute right-0">
+                    <div className="absolute right-0 hidden sm:block">
                         <p className="pl-6">^</p>
                         <p className="">200 WPM</p>
                     </div>
             </div>
-            <div className="mt-10 flex ">
-               <button className="text-xl  pl-1 pr-1 h-10 text-orange-300" onClick={()=>showGarage((garage)?false:true)}>Garage {'>'} </button>
+            <div className="mt-12  hidden">
+               <button className="sm:text-xl text-sm pl-1 pr-1 h-10 text-orange-300" onClick={()=>showGarage((garage)?false:true)}>Garage {'>'} </button>
                {(garage)&&
                 <div className="flex ml-4 cursor-pointer">
                     <div className={`p-2 ${(carIc===0)?'text-orange-300':''}`} onClick={()=>{setCarIc(0), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faCarSide}  size="2xl"/>
+                       <FontAwesomeIcon icon={faCarSide}  />
                     </div>
                     <div className={`p-2 ${(carIc===1)?'text-orange-300':''}`} onClick={()=>{setCarIc(1), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faMotorcycle}  size="2xl"/>
+                       <FontAwesomeIcon icon={faMotorcycle} />
                     </div>
                     <div className={`p-2 ${(carIc===2)?'text-orange-300':''}`} onClick={()=>{setCarIc(2), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faBiking}  size="2xl"/>
+                       <FontAwesomeIcon icon={faBiking} />
                     </div>
                     <div className={`p-2 ${(carIc===3)?'text-orange-300':''}`} onClick={()=>{setCarIc(3), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faSailboat} size="2xl" />
+                       <FontAwesomeIcon icon={faSailboat} />
                     </div>
                     <div className={`p-2 ${(carIc===4)?'text-orange-300':''}`} onClick={()=>{setCarIc(4), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faTractor} size="2xl" />
+                       <FontAwesomeIcon icon={faTractor} />
                     </div>
                     <div className={`p-2 ${(carIc===5)?'text-orange-300':''}`} onClick={()=>{setCarIc(5), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faHorse} size="2xl" />
+                       <FontAwesomeIcon icon={faHorse} />
                     </div>
                     <div className={`p-2 ${(carIc===6)?'text-orange-300':''}`} onClick={()=>{setCarIc(6), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faTruck}  size="2xl"/>
+                       <FontAwesomeIcon icon={faTruck} />
                     </div>
                 </div>}
             </div>

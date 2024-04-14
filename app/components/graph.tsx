@@ -34,7 +34,7 @@ function Example({wpmList, graph}:any) {
     });
   }, [wpmList]);
   return (
-    <div className="w-1/2 h-80 absolute top-16 left-56 ml-44">
+    <div className="sm:w-1/2 3/4 h-80 absolute">
       {/* line chart */}
       {/* <h1 className="w-[110px] mx-auto mt-10 text-xl font-semibold capitalize ">line Chart</h1>
       <div className="w-[1100px] h-screen flex mx-auto my-auto">
