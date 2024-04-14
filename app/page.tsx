@@ -28,6 +28,7 @@ export default function Home() {
       <main className={`${(!start)?'bg-covers bg-center':' bg-orange-900'} text-gray-100 min-h-screen`} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <title>TypeRiders</title>
         </Head>
         {(! start)&&
         <div className="w-full flex justify-center">
