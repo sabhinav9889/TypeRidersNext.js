@@ -1,6 +1,10 @@
-import Image from "next/image";
-import { useState } from "react";
+"use client"
+// import { redirect } from "next/dist/server/api-utils";
+// import Image from "next/image";
+// import { useState } from "react";
+import { useRouter } from 'next/navigation';
 const Profile = () => {
+    const router = useRouter();
     const userName = "CamLoT";
     const userEmail = "sabhinav@gmail.com";
     const avgWpm = 58;
@@ -12,7 +16,6 @@ const Profile = () => {
     // const [photo, setPhoto] = useState();
     // const handleFileUpload = (e:Event) => {
     //     const fileInput = e.target as HTMLInputElement;
-
     //     if (!fileInput.files || fileInput.files.length === 0) {
     //         // alert("Files list is empty");
     //         return;
@@ -36,10 +39,10 @@ const Profile = () => {
     //         e.currentTarget.type = "text";
     //         e.currentTarget.type = "file";
     //    }
-        
     // }
     return(
-        <div className="hidden sm:block">
+        <div className="hidden sm:block bg-neutral-900 min-h-screen">
+            <button className="border absolute mt-24 w-12 h-8 rounded-md ml-12 hover:h-9" onClick={()=>router.push('/')}>X</button>
             <div className="w-full flex justify-center font-mono text-lg">
                 <div className="p-24">
                     <div  className="flex justify-center">

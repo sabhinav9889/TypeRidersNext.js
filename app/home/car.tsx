@@ -20,7 +20,6 @@ const Car = ({per, spin}:any)=>{
     if(carIc===2) car = faBiking;
     else if(carIc===3) car =  faSailboat;
     else if(carIc===4) car = faTractor;
-    else if(carIc===5) car = faHorse;
     else if(carIc===6) car = faTruck;
     return(
         <div className="absolute w-full z-10 top-80 sm:top-96 sm:mt-28" ref={getWidth}>
@@ -80,9 +79,6 @@ const Car = ({per, spin}:any)=>{
                     </div>
                     <div className={`p-2 ${(carIc===4)?'text-orange-300':''}`} onClick={()=>{setCarIc(4), showGarage(false) }}>
                        <FontAwesomeIcon icon={faTractor} />
-                    </div>
-                    <div className={`p-2 ${(carIc===5)?'text-orange-300':''}`} onClick={()=>{setCarIc(5), showGarage(false) }}>
-                       <FontAwesomeIcon icon={faHorse} />
                     </div>
                     <div className={`p-2 ${(carIc===6)?'text-orange-300':''}`} onClick={()=>{setCarIc(6), showGarage(false) }}>
                        <FontAwesomeIcon icon={faTruck} />

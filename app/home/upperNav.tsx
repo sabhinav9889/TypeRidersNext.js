@@ -43,8 +43,8 @@ const HomePage = () => {
                     {(diff===3)?<p className="pt-3 p-2  text-white">Coding</p>:<p className="pt-3 p-2  text-orange-200" onClick={()=>setDiff(3)}>Coding</p>}
                 </div>
                 <div className="flex col-span-2 text-sm sm:text-lg">
-                    <p className={`${(durpar===1)?'text-white':''} p-3`} onClick={()=>setDurPar(1)}>Duration</p>
-                    <p className={`${(durpar===2)?'text-white':''} p-3`} onClick={()=>setDurPar(2)}>Paragraph</p>
+                    {/* <p className={`${(durpar===1)?'text-white':''} p-3`} onClick={()=>setDurPar(1)}>Duration</p> */}
+                    {/* <p className={`${(durpar===2)?'text-white':''} p-3`} onClick={()=>setDurPar(2)}>Paragraph</p> */}
                 </div>
                 {(durpar===1)&&<div className="flex ml-2 col-span-2 text-sm sm:text-lg">
                     <p className="p-3  text-amber-300"><FontAwesomeIcon icon={faClock} /></p>

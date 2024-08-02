@@ -6,7 +6,9 @@ import { messageData } from "./context";
 import Car from "./car";
 import MusicPlayer from "./musicPlayer";
 import Graph from './graph';
-import Profile from "./profile";
+import Profile from "../profile/page";
+import { generate, count } from "random-words";
+import { useRouter } from 'next/navigation';
 
 const SinglePlayer = () => {
   const punct = "The sun, a fiery orb in the sky; blazed relentlessly—its rays, scorching everything in their path, made the earth beneath shimmer with heat waves. Mirages appearing like tantalizing illusions; teasing the weary traveler's senses. Birds, seeking refuge from the intense heat, sought shelter amidst the dense foliage. Their chirps—a symphony of survival—echoing through the sweltering air. Clouds, wispy and ethereal, drifted lazily across the azure expanse; casting fleeting shadows upon the parched land below! The wind, a gentle caress at first, gradually escalated into a fierce gale—whipping through the landscape with wild abandon, stirring up dust devils in its wake: trees, their branches swaying in a frantic dance, creaked and groaned under the relentless assault. Animals, instinctively attuned to the rhythms of nature, hunkered down in their burrows;";
@@ -14,12 +16,75 @@ const SinglePlayer = () => {
   const coding = `if (userSelection.equals("attack")) { enemyHealth -= weapon.getDamage(); for (int i = 0; i < enemyAttacks.length; i++) { if (Math.random() < enemyAttacks[i].getAccuracy()) { playerHealth -= enemyAttacks[i].getDamage(); System.out.println("Enemy " + enemyAttacks[i].getName() + " hits you for " + enemyAttacks[i].getDamage() + " damage!"); } else { System.out.println("Enemy " + enemyAttacks[i].getName() + " misses!"); } } } else if (userSelection.equals("heal")) { if (playerHealth + potion.getHealAmount() <= playerMaxHealth) { playerHealth += potion.getHealAmount(); } else { playerHealth = playerMaxHealth; } System.out.println("You heal for " + potion.getHealAmount() + " health points!"); } else { System.out.println("Invalid selection. Please choose 'attack' or 'heal'."); } while (playerHealth > 0 && enemyHealth > 0) { // Continue the combat loop... }`;
   const simple = "orange pen queen rat sun table, umbrella van watch xylophone yo-yo zoo ant bear cup desk elephant frog grape house ice jar kite lemon map nail owl pear quill rabbit snake tree unicorn violin window yarn zipper. In a quaint little village nestled amidst rolling hills and lush greenery, there lived a curious young boy named Timothy, whose days were filled with wonder and adventure. From the moment he opened his eyes in the morning to the time he drifted off to sleep at night, Timothy's imagination soared to new heights, fueled by the endless possibilities that surrounded him.";
   const contextValue = useContext(messageData);
-  const { countDown, diff,  begin, setBegin, music} = contextValue!;
-  let words = "";
-  if(diff===0) words = simple;
-  else if(diff==1) words =punct;
-  else if(diff==2) words =numPara;
-  else words =coding;
+  const { countDown, diff,  begin, setBegin, music, durpar} = contextValue!;
+  const generateWords = () => {
+    function getRandomInt(min: number, max: number): number {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    function shuffleArray(array: string[]): string {
+      let str: string = "";
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      for (let i = array.length - 1; i > 0; i--) {
+        str += array[i];
+        str += " ";
+    }
+      return str;
+    }
+    let wordTemp  = Object.values(generate(500));
+    function addIntoList(obj:Object){
+      wordTemp.push(...Object.values(obj));
+    }
+    if(durpar===1){
+      if(diff===0){
+        addIntoList(generate(400));
+      }
+       if(diff===1){ 
+        addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: ", " }));
+        addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: ". " }));
+        addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: "! " }));
+        addIntoList(generate({ exactly: 63, wordsPerString: 2, separator: " : " }));
+        addIntoList(generate({ exactly: 63, wordsPerString: 2, separator: ` "` }));
+        addIntoList(generate({ exactly: 63, wordsPerString: 2, separator: ` ? ` }));
+       }
+       if(diff===2){
+        addIntoList(generate(200));
+        for(let i=0; i<50; i++)
+        wordTemp.push(`${getRandomInt(1, 10)}`);
+        for(let i=0; i<100; i++)
+        wordTemp.push(`${getRandomInt(10,100)}`);
+        for(let i=0; i<50; i++)
+        wordTemp.push(`${getRandomInt(100, 1000)}`);
+      }
+       else if(diff===3){
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: " { " }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` } ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` + ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` * ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ( ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ) ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` = ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ; ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` @ ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` % ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` > ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` < ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ] ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` [ ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` - ` }));
+        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` & ` }));
+       }
+    }
+    const shuffledArray:string = shuffleArray(wordTemp.slice());
+    return shuffledArray;
+ }
+  const [words,setWords] = useState(generateWords());
+  // if(diff===0) words = simple;
+  // else if(diff==1) words =punct;
+  // else if(diff==2) words =numPara;
+  // else words = coding;
   let wordComp = words;
   const text = useRef(null);
   const mainDiv = useRef(null);
@@ -62,6 +127,7 @@ const SinglePlayer = () => {
     setCursor(0);
     setSpin(false);
     setWrongSet((set)=>{set.clear(); return set;});
+    setWords(generateWords());
     if(text.current){ 
       const element =  text.current as HTMLInputElement;
        element.style.marginTop = '0px';
@@ -78,6 +144,9 @@ const SinglePlayer = () => {
       element.style.filter='blur(5px)';
     }
   }
+  useEffect(()=>{
+    handleRefresh();
+  },[diff]);
   useEffect(() => {
     if(time){
       const interval = setInterval(() => {
@@ -124,14 +193,6 @@ const SinglePlayer = () => {
   }, [blur]);
   const handleKeyDown = (event: any) => {
     if(score!==-1) return;
-    if(blur===1){
-      setBlur(0); 
-      if(text.current){  
-        const element = text.current as HTMLInputElement;
-        element.style.filter='none'; 
-      }
-      return;
-    }
     const lis: string[] = [
       "AltGraph", "Alt", "Control", "Enter", "ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "CapsLock", "Tab", "Escape", "Backspace", "Shift","Meta",
       "end", "F1", "F2", "F3", "F4", "F5","F6", "F7", "F8", "F9","F10", "F11", "F12", "F13", "AudioVolumeUp", "AudioVolumeDown","MediaPlay","MediaPlayPause","MediaTrackPrevious","MediaTrackNext"
@@ -189,6 +250,14 @@ const SinglePlayer = () => {
     }
     if(cursor===wordComp.length) return;
     if(!lis2.includes(eventKey))  return;
+    if(blur===1){
+      setBlur(0);
+      if(text.current){  
+        const element = text.current as HTMLInputElement;
+        element.style.filter='none'; 
+      }
+      return;
+    }
     if(time===false) setTime(true);
     if (blink.current) {
       const element = blink.current as HTMLInputElement;
