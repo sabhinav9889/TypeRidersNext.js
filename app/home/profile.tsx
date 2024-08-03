@@ -1,16 +1,19 @@
 "use client"
 // import { redirect } from "next/dist/server/api-utils";
 // import Image from "next/image";
-// import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from 'next/navigation';
+import { messageData } from "./context";
 const Profile = () => {
     const router = useRouter();
+    const contextValue = useContext(messageData);
     const userName = "CamLoT";
     const userEmail = "sabhinav@gmail.com";
     const avgWpm = 58;
     const avgAccuracy = 92;
     const bestWpm = 86;
     const matchPlayed = 128;
+    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, setStopm} = contextValue!;
     // const [change, setchange] = useState(0);
     // const [File, setFile] = useState();
     // const [photo, setPhoto] = useState();
@@ -41,8 +44,8 @@ const Profile = () => {
     //    }
     // }
     return(
-        <div className="hidden sm:block bg-neutral-900 min-h-screen">
-            <button className="border absolute mt-24 w-12 h-8 rounded-md ml-12 hover:h-9" onClick={()=>router.push('/')}>X</button>
+        <div className="hidden sm:block min-h-screen">
+            <button className="border absolute mt-24 w-12 h-8 rounded-md ml-12 hover:h-9" onClick={()=>setDiff(0)}>X</button>
             <div className="w-full flex justify-center font-mono text-lg">
                 <div className="p-24">
                     <div  className="flex justify-center">

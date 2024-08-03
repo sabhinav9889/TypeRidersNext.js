@@ -23,7 +23,6 @@ const Car = ({per, spin}:any)=>{
     else if(carIc===6) car = faTruck;
     return(
         <div className="absolute w-full z-10 top-80 sm:top-96 sm:mt-28" ref={getWidth}>
-
           {(hide)&&<div className="ml-2 cursor-pointer" onClick={()=>setHide((hide)?false:true)}><FontAwesomeIcon icon={faEye}></FontAwesomeIcon></div>}
         {(!hide)&&<div>
             <div className="flex">

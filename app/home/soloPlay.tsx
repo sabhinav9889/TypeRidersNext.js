@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faRotateRight} from "@fortawesome/free-solid-svg-icons";
 import { messageData } from "./context";
 import Car from "./car";
-import MusicPlayer from "./musicPlayer";
+import MusicPlayer from "./spotify";
 import Graph from './graph';
-import Profile from "../profile/page";
+import Profile from "./profile";
 import { generate, count } from "random-words";
 import { useRouter } from 'next/navigation';
 
@@ -16,7 +16,7 @@ const SinglePlayer = () => {
   const coding = `if (userSelection.equals("attack")) { enemyHealth -= weapon.getDamage(); for (int i = 0; i < enemyAttacks.length; i++) { if (Math.random() < enemyAttacks[i].getAccuracy()) { playerHealth -= enemyAttacks[i].getDamage(); System.out.println("Enemy " + enemyAttacks[i].getName() + " hits you for " + enemyAttacks[i].getDamage() + " damage!"); } else { System.out.println("Enemy " + enemyAttacks[i].getName() + " misses!"); } } } else if (userSelection.equals("heal")) { if (playerHealth + potion.getHealAmount() <= playerMaxHealth) { playerHealth += potion.getHealAmount(); } else { playerHealth = playerMaxHealth; } System.out.println("You heal for " + potion.getHealAmount() + " health points!"); } else { System.out.println("Invalid selection. Please choose 'attack' or 'heal'."); } while (playerHealth > 0 && enemyHealth > 0) { // Continue the combat loop... }`;
   const simple = "orange pen queen rat sun table, umbrella van watch xylophone yo-yo zoo ant bear cup desk elephant frog grape house ice jar kite lemon map nail owl pear quill rabbit snake tree unicorn violin window yarn zipper. In a quaint little village nestled amidst rolling hills and lush greenery, there lived a curious young boy named Timothy, whose days were filled with wonder and adventure. From the moment he opened his eyes in the morning to the time he drifted off to sleep at night, Timothy's imagination soared to new heights, fueled by the endless possibilities that surrounded him.";
   const contextValue = useContext(messageData);
-  const { countDown, diff,  begin, setBegin, music, durpar} = contextValue!;
+  const { countDown, diff,  begin, setBegin, music, durpar, cur, setCur} = contextValue!;
   const generateWords = () => {
     function getRandomInt(min: number, max: number): number {
       return Math.floor(Math.random() * (max - min)) + min;
@@ -33,13 +33,16 @@ const SinglePlayer = () => {
     }
       return str;
     }
-    let wordTemp  = Object.values(generate(500));
+    let wordTemp  = Object.values(generate({exactly:80, maxLength: 5}));
     function addIntoList(obj:Object){
       wordTemp.push(...Object.values(obj));
     }
     if(durpar===1){
       if(diff===0){
-        addIntoList(generate(400));
+        if(countDown===15) addIntoList(generate({exactly:20, maxLength: 7}));
+        else if(countDown===30) addIntoList(generate({exactly:110, maxLength: 7}));
+        else if(countDown===60) addIntoList(generate({exactly:440, maxLength: 7}));
+        else addIntoList(generate({exactly: 680, maxLength:5}));
       }
        if(diff===1){ 
         addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: ", " }));
@@ -139,6 +142,7 @@ const SinglePlayer = () => {
     }
     setTime(false);
     setBegin(false);
+    setCur(true);
     if(text.current){ 
       const element = text.current as HTMLInputElement;
       element.style.filter='blur(5px)';
@@ -204,6 +208,8 @@ const SinglePlayer = () => {
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "{","}","[","]","<",">", "_"," "
     ]
     let eventKey = event.key;
+    setBegin(true);
+    setCur(false);
     if(eventKey==='Unidentified'||eventKey===undefined){
       eventKey = event.target.value;
     }
@@ -329,18 +335,19 @@ const SinglePlayer = () => {
   };
   
   return (
-    <div className={`w-full min-h-screen select-none`} ref={mainDiv} tabIndex={0} onKeyDown={(e)=>handleKeyDown(e)}>
+    <>
+     <div className={`w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} onKeyDown={(e)=>handleKeyDown(e)}>
       <div className={`${diff===4?'hidden':'flex'} justify-center items-center`}>
         {(score===-1)&&
         <div className="sm:p-32 p-12 h-auto">
           <div className="text-orange-400 flex justify-center mb-4 font-semibold">{seconds} sec</div>
           <div className="flex justify-center items-center">
             <div className="overflow-hidden text-2xl sm:h-24 h-32 sm:w-3/4 w-64">
-              <div className="flex justify-center" onClick={()=>{ setBlur(0); setBegin(true); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';}} }>{(blur)?<p className="absolute z-10 mt-8 font-mono  text-sm" ref={blurP}>Click here or press any key to focus</p>:<div className="hidden">Hello</div>}</div>
-                <div className={`overflow-hidden font-mono ${(blur)?'blur-sm':''}`} ref={text} onClick={()=>{ setBlur(0); setBegin(true); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';} setchange((prev)=>prev+1)}} >
+              <div className="flex justify-center" onClick={()=>{ setBlur(0); setBegin(true); setCur(false); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';}} }>{(blur)?<p className="absolute z-10 mt-8 font-mono  text-sm" ref={blurP}>Click here or press any key to focus</p>:<div className="hidden">Hello</div>}</div>
+                <div className={`overflow-hidden font-mono ${(blur)?'blur-sm':''}`} ref={text} onClick={()=>{ setBlur(0); setCur(false); setBegin(true); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';} setchange((prev)=>prev+1)}} >
                 {passage}
                 </div>
-              <input type="text"  className="absolute w-64 h-32 sm:hidden top-20 opacity-0" onClick={()=>{setBlur(0); setBegin(true);}} onChange={(e)=>{  handleKeyDown(e);   e.target.value=""}}/> 
+              <input type="text"  className="absolute w-64 h-32 sm:hidden top-20 opacity-0" onClick={()=>{setBlur(0); setCur(false); setBegin(true);}} onChange={(e)=>{  handleKeyDown(e);   e.target.value=""}}/> 
             </div>
           </div>
           <div className="flex justify-center text-black">
@@ -373,11 +380,12 @@ const SinglePlayer = () => {
         } 
       </div>
       <Car per={wpm.toFixed(2)} spin={spin}/>
-      <div className={`w-80 h-40 overflow-hidden absolute right-0 top-80 mt-40 sm:mt-0 ${(begin)?' -z-10':''}`}>
-      {(music)&&<MusicPlayer/>} 
-      </div>
       {(diff==4)&&<Profile/>}
     </div>
+      <div className={` ${(begin)?'':''}`}>
+        <MusicPlayer/>
+      </div>
+    </>
   );
 };
 

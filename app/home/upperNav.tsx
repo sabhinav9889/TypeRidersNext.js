@@ -30,7 +30,7 @@ const HomePage = () => {
             MyTheme = "bg-pink-800";
         }
     return(
-        <div className="w-full absolute select-none font-mono">
+        <div className="w-full absolute select-none font-mono z-10">
         {(begin)?<div className="p-3 flex"><FontAwesomeIcon icon={faKeyboard} size="xl" /><p className="pl-4">TypeRiders</p></div>:<></>}
             {(!begin)?
             <div className={`grid md:grid-cols-12 grid-cols-4 pr-12 ${MyTheme} text-orange-300 cursor-pointer`}>

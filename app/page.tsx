@@ -1,12 +1,12 @@
 "use client"
 import SinglePlayer from "./home/soloPlay";
-import HomePage from "./home/upperNav";
-import { useContext, useRef} from "react";
+import UpNav from "./home/upperNav";
+import { useContext, useRef, useState} from "react";
 import {messageData} from "./home/context";
 import Head from "next/head";
 import DownNav from "./home/downNav";
 // import Profile from "./components/profile";
-import MusicPlayer from "./home/musicPlayer";
+import MusicPlayer from "./home/spotify";
 // import Footer from "./components/footer";
 // import Car from "./components/car";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,8 +15,9 @@ import MusicPlayer from "./home/musicPlayer";
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);
   const contextValue = useContext(messageData);
-  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart} = contextValue!;
+  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur} = contextValue!;
   if(themeSet.current){
+    themeSet.current.addEventListener('mousemove',()=>setCur(true));
     if(theme===0){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.add("bg-neutral-950"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
     else if(theme===1){ themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-gray-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100");}
     else if(theme===2){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-orange-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
@@ -25,7 +26,7 @@ export default function Home() {
     else if(theme===5){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-pink-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
   }
   return (
-      <main className={`${(!start)?'bg-covers bg-center':' bg-orange-900'} text-gray-100 min-h-screen`} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>
+      <main className={`${(!start)?'bg-covers bg-center':' bg-orange-900 '} text-gray-100 min-h-screen ${(cur)?'':'cursor-none'} `} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -36,7 +37,7 @@ export default function Home() {
            <button className="border hover:border-orange-800 mt-36 w-44 h-10 rounded-md hover:bg-orange-800" onClick={()=>setStart(true)}>Start</button>
           </div>
         </div>}
-        {(start)&&<><HomePage/>
+        {(start)&&<>{(!begin)&&<UpNav/>}
         <SinglePlayer/>
         {(!begin)&&<DownNav/>}
         </>}

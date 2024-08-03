@@ -20,6 +20,10 @@ interface ValueProps {
     setMusic: Dispatch<SetStateAction<boolean>>;
     durpar: number;
     setDurPar: Dispatch<SetStateAction<number>>;
+    stopm: boolean;
+    setStopm: Dispatch<SetStateAction<boolean>>;
+    cur: boolean;
+    setCur: Dispatch<SetStateAction<boolean>>;
 }
 
 // Step 3: Create the context provider component
@@ -31,7 +35,9 @@ const Context: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [start, setStart] = useState<boolean>(false);
     const [music, setMusic] = useState<boolean>(false);
     const [durpar, setDurPar] = useState<number>(1);
-    const value: ValueProps = { theme, setTheme , countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar};
+    const [stopm, setStopm] = useState<boolean>(true);
+    const [cur, setCur] = useState<boolean>(true);
+    const value: ValueProps = { theme, setTheme , countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm ,setStopm, cur, setCur};
     return (
         <messageData.Provider value={value}>
             {children}

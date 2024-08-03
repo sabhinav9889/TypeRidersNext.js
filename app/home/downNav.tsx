@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 const DownNav = () => {
     const contextValue = useContext(messageData);
     const router = useRouter();
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar} = contextValue!;
+    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm, setStopm} = contextValue!;
     const [selectTheme, setSelectedTheme] = useState(false);
     let MyTheme = "bg-zinc-800";
     if(theme===0){ 
@@ -31,8 +31,8 @@ const DownNav = () => {
     return(
         <div className={`grid md:grid-cols-7 grid-cols-6 absolute z-10 bottom-0 w-full h-auto ${MyTheme} text-orange-300 cursor-pointer`}>
         <div className="flex col-span-3">
-            {(diff===4)?<div className=" text-white mt-3 md:ml-12 flex text-lg ml-2 md:text-2xl" onClick={()=>router.push('/profile')}><FontAwesomeIcon icon={faAddressCard} /><p className="ml-2 text-sm md:text-lg">Profile</p></div>:<div className="text-orange-300 mt-3 ml-2 md:ml-12 flex text-lg md:text-2xl" onClick={()=>router.push('/profile')}><FontAwesomeIcon icon={faAddressCard} /><p className="ml-2 text-sm md:text-lg">Profile</p></div>}
-            <div className={`p-2 md:ml-3 w-28 text-sm md:text-lg  mt-1 ${(music)?'text-white':''}`}><p onClick={()=>setMusic((music)?false:true)}><FontAwesomeIcon icon={faMusic}/><span className="ml-2">Spotify</span></p></div>
+            {(diff===4)?<div className=" text-white mt-3 md:ml-12 flex text-lg ml-2 md:text-2xl" onClick={()=>setDiff(4)}><FontAwesomeIcon icon={faAddressCard} /><p className="ml-2 text-sm md:text-lg">Profile</p></div>:<div className="text-orange-300 mt-3 ml-2 md:ml-12 flex text-lg md:text-2xl" onClick={()=>setDiff(4)}><FontAwesomeIcon icon={faAddressCard} /><p className="ml-2 text-sm md:text-lg">Profile</p></div>}
+            <div className={`p-2 md:ml-3 w-28 text-sm md:text-lg  mt-1 ${(!stopm)?'text-white':''}`}><p onClick={()=>{setMusic(true); setStopm(false)}}><FontAwesomeIcon icon={faMusic}/><span className="ml-2">Music</span></p></div>
         </div>
             <div className="flex lg:col-span-2 col-span-4">
                 <div className="p-2" onClick={()=>setSelectedTheme((selectTheme)?false:true)}>
