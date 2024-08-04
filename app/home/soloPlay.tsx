@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState, ReactNode, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faRotateRight} from "@fortawesome/free-solid-svg-icons";
+import {faRotateRight, faLock} from "@fortawesome/free-solid-svg-icons";
 import { messageData } from "./context";
 import Car from "./car";
 import MusicPlayer from "./spotify";
@@ -17,6 +17,7 @@ const SinglePlayer = () => {
   const simple = "orange pen queen rat sun table, umbrella van watch xylophone yo-yo zoo ant bear cup desk elephant frog grape house ice jar kite lemon map nail owl pear quill rabbit snake tree unicorn violin window yarn zipper. In a quaint little village nestled amidst rolling hills and lush greenery, there lived a curious young boy named Timothy, whose days were filled with wonder and adventure. From the moment he opened his eyes in the morning to the time he drifted off to sleep at night, Timothy's imagination soared to new heights, fueled by the endless possibilities that surrounded him.";
   const contextValue = useContext(messageData);
   const { countDown, diff,  begin, setBegin, music, durpar, cur, setCur} = contextValue!;
+  const [caps, setCaps] = useState<boolean>(false);
   const generateWords = () => {
     function getRandomInt(min: number, max: number): number {
       return Math.floor(Math.random() * (max - min)) + min;
@@ -207,6 +208,7 @@ const SinglePlayer = () => {
       "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "=","`","~","|",',', ".", "?", "'", "/", "-", ":", ";", '"',
       "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "{","}","[","]","<",">", "_"," "
     ]
+    setCaps(event.getModifierState('CapsLock'));
     let eventKey = event.key;
     setBegin(true);
     setCur(false);
@@ -340,7 +342,18 @@ const SinglePlayer = () => {
       <div className={`${diff===4?'hidden':'flex'} justify-center items-center`}>
         {(score===-1)&&
         <div className="sm:p-32 p-12 h-auto">
-          <div className="text-orange-400 flex justify-center mb-4 font-semibold">{seconds} sec</div>
+          <div className="text-orange-400 mb-4 sm:mt-0 mt-12 flex font-semibold">
+            <span className="absloute z-20 w-1/5 flex justify-end ">{seconds} sec</span>
+            
+            <span className="flex  w-full justify-end">
+            {(caps)&&
+              <span className="flex absloute z-10 shadow-lg text-yellow-200">
+                <FontAwesomeIcon icon={faLock} className="mr-2"/>
+                Caps Lock
+              </span>
+              }
+            </span>
+          </div>
           <div className="flex justify-center items-center">
             <div className="overflow-hidden text-2xl sm:h-24 h-32 sm:w-3/4 w-64">
               <div className="flex justify-center" onClick={()=>{ setBlur(0); setBegin(true); setCur(false); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';}} }>{(blur)?<p className="absolute z-10 mt-8 font-mono  text-sm" ref={blurP}>Click here or press any key to focus</p>:<div className="hidden">Hello</div>}</div>
@@ -379,7 +392,7 @@ const SinglePlayer = () => {
            </div>:<></>
         } 
       </div>
-      <Car per={wpm.toFixed(2)} spin={spin}/>
+      <Car per={wpm.toFixed(2)} spin={spin} begin={begin}/>
       {(diff==4)&&<Profile/>}
     </div>
       <div className={` ${(begin)?'':''}`}>

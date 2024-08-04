@@ -2,7 +2,7 @@
 import {useState,  useRef} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarSide, faSailboat, faMotorcycle, faTruck, faEye, faEyeSlash, faHorse, faTractor, faBiking } from "@fortawesome/free-solid-svg-icons";
-const Car = ({per, spin}:any)=>{
+const Car = ({per, spin, begin}:any)=>{
     // const speed = Math.max(2, 70-per);
     if(per>=192) per = 192;
     const [wid, setWid] = useState(0);
@@ -60,6 +60,7 @@ const Car = ({per, spin}:any)=>{
                         <p className="">200 WPM</p>
                     </div>
             </div>
+            {(!begin)&&
             <div className="mt-12 flex">
                <button className="sm:text-xl text-sm pl-1 pr-1 h-10 text-orange-300" onClick={()=>showGarage((garage)?false:true)}>Garage {'>'} </button>
                {(garage)&&
@@ -83,7 +84,7 @@ const Car = ({per, spin}:any)=>{
                        <FontAwesomeIcon icon={faTruck} />
                     </div>
                 </div>}
-            </div>
+            </div>}
         </div>}
         </div>
     )

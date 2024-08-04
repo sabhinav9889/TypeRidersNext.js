@@ -37,7 +37,8 @@ export default function Home() {
            <button className="border hover:border-orange-800 mt-36 w-44 h-10 rounded-md hover:bg-orange-800" onClick={()=>setStart(true)}>Start</button>
           </div>
         </div>}
-        {(start)&&<div className={`${(cur)?'':'cursor-none'}`}>{(!begin)&&<UpNav/>}
+        {(start)&&<div className={`${(cur)?'':'cursor-none'}`}>
+        {(!begin)&&<UpNav/>}
         <SinglePlayer/>
         {(!begin)&&<DownNav/>}
         </div>}
