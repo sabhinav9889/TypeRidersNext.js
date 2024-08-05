@@ -2,15 +2,9 @@
 import SinglePlayer from "./home/soloPlay";
 import UpNav from "./home/upperNav";
 import { useContext, useRef, useState} from "react";
-import {messageData} from "./home/context";
+import {messageData} from "./context";
 import Head from "next/head";
 import DownNav from "./home/downNav";
-// import Profile from "./components/profile";
-import MusicPlayer from "./home/spotify";
-// import Footer from "./components/footer";
-// import Car from "./components/car";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {faGithub} from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);

@@ -2,10 +2,8 @@
 // import { redirect } from "next/dist/server/api-utils";
 // import Image from "next/image";
 import { useState, useContext } from "react";
-import { useRouter } from 'next/navigation';
-import { messageData } from "./context";
+import { messageData } from "../context";
 const Profile = () => {
-    const router = useRouter();
     const contextValue = useContext(messageData);
     const userName = "CamLoT";
     const userEmail = "sabhinav@gmail.com";
@@ -13,7 +11,7 @@ const Profile = () => {
     const avgAccuracy = 92;
     const bestWpm = 86;
     const matchPlayed = 128;
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, setStopm} = contextValue!;
+    const {setDiff} = contextValue!;
     // const [change, setchange] = useState(0);
     // const [File, setFile] = useState();
     // const [photo, setPhoto] = useState();

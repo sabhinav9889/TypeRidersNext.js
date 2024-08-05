@@ -2,93 +2,19 @@
 import React, { useEffect, useRef, useState, ReactNode, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faRotateRight, faLock} from "@fortawesome/free-solid-svg-icons";
-import { messageData } from "./context";
+import { messageData } from "../context";
 import Car from "./car";
 import MusicPlayer from "./spotify";
 import Graph from './graph';
 import Profile from "./profile";
-import { generate, count } from "random-words";
-import { useRouter } from 'next/navigation';
+import { keyboardButtons } from "../constant";
+import { generateWords } from "../config";
 
 const SinglePlayer = () => {
-  const punct = "The sun, a fiery orb in the sky; blazed relentlessly—its rays, scorching everything in their path, made the earth beneath shimmer with heat waves. Mirages appearing like tantalizing illusions; teasing the weary traveler's senses. Birds, seeking refuge from the intense heat, sought shelter amidst the dense foliage. Their chirps—a symphony of survival—echoing through the sweltering air. Clouds, wispy and ethereal, drifted lazily across the azure expanse; casting fleeting shadows upon the parched land below! The wind, a gentle caress at first, gradually escalated into a fierce gale—whipping through the landscape with wild abandon, stirring up dust devils in its wake: trees, their branches swaying in a frantic dance, creaked and groaned under the relentless assault. Animals, instinctively attuned to the rhythms of nature, hunkered down in their burrows;";
-  const numPara = "In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see. In a quaint village nestled between rolling hills, the population numbered around 1000 souls, each person contributing to the tight-knit community's vibrancy. Throughout the year, 52 weeks passed, punctuated by the changing seasons and annual festivities. Within the village, there were 365 houses, each with its own unique charm and history. The local market bustled with activity, vendors selling fresh produce, handmade crafts, and other goods to eager customers. Children played in the streets, their laughter echoing off the cobblestones, while adults gathered in the town square to discuss matters of importance. The church bell tolled every hour, its chime a comforting presence in the tranquil surroundings. Nearby, a river flowed steadily, its waters teeming with fish of various sizes and colors. Fields stretched out as far as the eye could see.";
-  const coding = `if (userSelection.equals("attack")) { enemyHealth -= weapon.getDamage(); for (int i = 0; i < enemyAttacks.length; i++) { if (Math.random() < enemyAttacks[i].getAccuracy()) { playerHealth -= enemyAttacks[i].getDamage(); System.out.println("Enemy " + enemyAttacks[i].getName() + " hits you for " + enemyAttacks[i].getDamage() + " damage!"); } else { System.out.println("Enemy " + enemyAttacks[i].getName() + " misses!"); } } } else if (userSelection.equals("heal")) { if (playerHealth + potion.getHealAmount() <= playerMaxHealth) { playerHealth += potion.getHealAmount(); } else { playerHealth = playerMaxHealth; } System.out.println("You heal for " + potion.getHealAmount() + " health points!"); } else { System.out.println("Invalid selection. Please choose 'attack' or 'heal'."); } while (playerHealth > 0 && enemyHealth > 0) { // Continue the combat loop... }`;
-  const simple = "orange pen queen rat sun table, umbrella van watch xylophone yo-yo zoo ant bear cup desk elephant frog grape house ice jar kite lemon map nail owl pear quill rabbit snake tree unicorn violin window yarn zipper. In a quaint little village nestled amidst rolling hills and lush greenery, there lived a curious young boy named Timothy, whose days were filled with wonder and adventure. From the moment he opened his eyes in the morning to the time he drifted off to sleep at night, Timothy's imagination soared to new heights, fueled by the endless possibilities that surrounded him.";
   const contextValue = useContext(messageData);
   const { countDown, diff,  begin, setBegin, music, durpar, cur, setCur} = contextValue!;
   const [caps, setCaps] = useState<boolean>(false);
-  const generateWords = () => {
-    function getRandomInt(min: number, max: number): number {
-      return Math.floor(Math.random() * (max - min)) + min;
-    }
-    function shuffleArray(array: string[]): string {
-      let str: string = "";
-      for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-      }
-      for (let i = array.length - 1; i > 0; i--) {
-        str += array[i];
-        str += " ";
-    }
-      return str;
-    }
-    let wordTemp  = Object.values(generate({exactly:80, maxLength: 5}));
-    function addIntoList(obj:Object){
-      wordTemp.push(...Object.values(obj));
-    }
-    if(durpar===1){
-      if(diff===0){
-        if(countDown===15) addIntoList(generate({exactly:20, maxLength: 7}));
-        else if(countDown===30) addIntoList(generate({exactly:110, maxLength: 7}));
-        else if(countDown===60) addIntoList(generate({exactly:440, maxLength: 7}));
-        else addIntoList(generate({exactly: 680, maxLength:5}));
-      }
-       if(diff===1){ 
-        addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: ", " }));
-        addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: ". " }));
-        addIntoList(generate({ exactly: 67, wordsPerString: 2, separator: "! " }));
-        addIntoList(generate({ exactly: 63, wordsPerString: 2, separator: " : " }));
-        addIntoList(generate({ exactly: 63, wordsPerString: 2, separator: ` "` }));
-        addIntoList(generate({ exactly: 63, wordsPerString: 2, separator: ` ? ` }));
-       }
-       if(diff===2){
-        addIntoList(generate(200));
-        for(let i=0; i<50; i++)
-        wordTemp.push(`${getRandomInt(1, 10)}`);
-        for(let i=0; i<100; i++)
-        wordTemp.push(`${getRandomInt(10,100)}`);
-        for(let i=0; i<50; i++)
-        wordTemp.push(`${getRandomInt(100, 1000)}`);
-      }
-       else if(diff===3){
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: " { " }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` } ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` + ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` * ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ( ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ) ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` = ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ; ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` @ ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` % ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` > ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` < ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` ] ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` [ ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` - ` }));
-        addIntoList(generate({ exactly: 5, wordsPerString: 2, separator: ` & ` }));
-       }
-    }
-    const shuffledArray:string = shuffleArray(wordTemp.slice());
-    return shuffledArray;
- }
-  const [words,setWords] = useState(generateWords());
-  // if(diff===0) words = simple;
-  // else if(diff==1) words =punct;
-  // else if(diff==2) words =numPara;
-  // else words = coding;
+  const [words,setWords] = useState(generateWords(diff, durpar, countDown));
   let wordComp = words;
   const text = useRef(null);
   const mainDiv = useRef(null);
@@ -111,7 +37,6 @@ const SinglePlayer = () => {
   const [spin, setSpin] = useState(false);
   const [wpmList, setWpmList] = useState<number[]>([]);
   const [graph, setGraph] = useState<number[]>([]);
-  // const [mob, setMobKey] = useState("");
   function isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
@@ -131,7 +56,7 @@ const SinglePlayer = () => {
     setCursor(0);
     setSpin(false);
     setWrongSet((set)=>{set.clear(); return set;});
-    setWords(generateWords());
+    setWords(generateWords(diff, durpar, countDown));
     if(text.current){ 
       const element =  text.current as HTMLInputElement;
        element.style.marginTop = '0px';
@@ -198,16 +123,6 @@ const SinglePlayer = () => {
   }, [blur]);
   const handleKeyDown = (event: any) => {
     if(score!==-1) return;
-    const lis: string[] = [
-      "AltGraph", "Alt", "Control", "Enter", "ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "CapsLock", "Tab", "Escape", "Backspace", "Shift","Meta",
-      "end", "F1", "F2", "F3", "F4", "F5","F6", "F7", "F8", "F9","F10", "F11", "F12", "F13", "AudioVolumeUp", "AudioVolumeDown","MediaPlay","MediaPlayPause","MediaTrackPrevious","MediaTrackNext"
-    ];
-    const lis2: string[] = [
-      "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-      "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-      "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "=","`","~","|",',', ".", "?", "'", "/", "-", ":", ";", '"',
-      "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "{","}","[","]","<",">", "_"," "
-    ]
     if(!isMobile()) setCaps(event.getModifierState('CapsLock'));
     let eventKey = event.key;
     setBegin(true);
@@ -239,7 +154,6 @@ const SinglePlayer = () => {
       }
       if(passage&&cursor>=0){
         const temp: ReactNode = passage;
-        // temp[cursor] = <span className="" key={cursor}>{wordComp[cursor]}</span>;
         setPassage(prevPassage => {
           const updatedPassage = [...(prevPassage)||[]]; // Clone the passage array
           updatedPassage[cursor] = <span className="" key={cursor}>{wordComp[cursor]}</span>;
@@ -257,7 +171,7 @@ const SinglePlayer = () => {
       return;
     }
     if(cursor===wordComp.length) return;
-    if(!lis2.includes(eventKey))  return;
+    if(!keyboardButtons.includes(eventKey))  return;
     if(blur===1){
       setBlur(0);
       if(text.current){  
@@ -287,19 +201,16 @@ const SinglePlayer = () => {
         }
       }
     }
-    // if(passage) console.log("Key : " + event.key+"word: "+ typeof(passage));
     if(passage){
       if(cursor>=0) passage[cursor] = <span className="" key={cursor}>{wordComp[cursor]}</span>;
       if(cursor+1<wordComp.length){
         const clone = React.cloneElement(passage[cursor+1] as React.ReactElement, {className: 'text-white'});
-        // const clone = React.cloneElement(passage[cursor+1], {className: 'text-white'});
         passage[cursor+1] = <span className="visible text-orange-400 animate-pulse" key={cursor+1} ref={blink}>|{clone}</span>;
       }
     }
     if(eventKey!==wordComp[cursor]){
       setWrongSet((set)=>set?.add(cursor));
       setIsWrong((st)=>{ st?.add(cursor); return st;});
-      // const clone = React.cloneElement(passage[cursor], {className: 'text-red-600'});
       if(passage){
         const clone = React.cloneElement(passage[cursor] as React.ReactElement, {className: 'text-red-600'});
         passage[cursor] = clone;
@@ -308,7 +219,6 @@ const SinglePlayer = () => {
       setSpin(true);
     }
     else{
-      // const clone = React.cloneElement(passage[cursor], {className: 'text-orange-300'});
       if(passage){
         const clone = React.cloneElement(passage[cursor] as React.ReactElement, {className: 'text-orange-300'});
         passage[cursor] = clone;

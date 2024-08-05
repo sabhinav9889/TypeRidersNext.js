@@ -1,0 +1,21 @@
+import { faCarSide, faSailboat, faMotorcycle, faTruck, faTractor, faBiking, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
+const myTheme: string[] = ["bg-zinc-800", "bg-gray-800", "bg-orange-800", "bg-slate-800", "bg-gray-500", "bg-pink-800"];
+
+let Icons = [faCarSide, faMotorcycle, faBiking, faSailboat, faTractor, faTruck, faEye, faEyeSlash];
+
+const keyboardButtons: string[] = [
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+    "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "=","`","~","|",',', ".", "?", "'", "/", "-", ":", ";", '"',
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "{","}","[","]","<",">", "_"," "
+]
+
+let coding: string[] = [" { ", " } ", " + "," * "," + "," ( "," ) "," = "," ; "," @ "," % "," > "," < ", " ] "," [ "," - "," & "];
+
+const map = new Map<number,number>([[0,80],[15,20],[30,110],[60,440],[100,680]]);
+let punch: string[] = [", ",". ","! ",": ",`" `,`? `,`' `];
+const typeDiff: string[] = ["Simple","Punctuation","Numbers","Coding"];
+const typeDur: number[] = [15, 30, 60, 100];
+
+export {myTheme, keyboardButtons, coding, map, punch, Icons, typeDiff, typeDur};

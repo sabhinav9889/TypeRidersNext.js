@@ -2,7 +2,7 @@
 import { Spotify } from "react-spotify-embed";
 import { useRouter } from 'next/navigation';
 import { useState,useContext} from "react";
-import { messageData } from "./context";
+import { messageData } from "../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus} from "@fortawesome/free-solid-svg-icons";
 // className="h-40 absolute z-10"
