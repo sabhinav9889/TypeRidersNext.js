@@ -56,7 +56,7 @@ const Car = ({per, spin, begin}:any)=>{
                 <div className="flex ml-4 cursor-pointer">
                     {
                         Icons.map((ele,i)=>i<6&&(
-                            <div className={`p-2 ${(i===carIc)?'text-orange-300':''}`} onClick={()=>{setCarIc(i), showGarage(false) }}>
+                            <div className={`p-2 ${(i===carIc)?'text-orange-300':''}`} onClick={()=>{setCarIc(i), showGarage(false) }} key={i}>
                                 <FontAwesomeIcon icon={Icons[i]} />
                             </div>)
                         )
