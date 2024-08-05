@@ -54,24 +54,13 @@ const Car = ({per, spin, begin}:any)=>{
                <button className="sm:text-xl text-sm pl-1 pr-1 h-10 text-orange-300" onClick={()=>showGarage((garage)?false:true)}>Garage {'>'} </button>
                {(garage)&&
                 <div className="flex ml-4 cursor-pointer">
-                    <div className={`p-2 ${(carIc===0)?'text-orange-300':''}`} onClick={()=>{setCarIc(0), showGarage(false) }}>
-                       <FontAwesomeIcon icon={Icons[0]}  />
-                    </div>
-                    <div className={`p-2 ${(carIc===1)?'text-orange-300':''}`} onClick={()=>{setCarIc(1), showGarage(false) }}>
-                       <FontAwesomeIcon icon={Icons[1]} />
-                    </div>
-                    <div className={`p-2 ${(carIc===2)?'text-orange-300':''}`} onClick={()=>{setCarIc(2), showGarage(false) }}>
-                       <FontAwesomeIcon icon={Icons[2]} />
-                    </div>
-                    <div className={`p-2 ${(carIc===3)?'text-orange-300':''}`} onClick={()=>{setCarIc(3), showGarage(false) }}>
-                       <FontAwesomeIcon icon={Icons[3]} />
-                    </div>
-                    <div className={`p-2 ${(carIc===4)?'text-orange-300':''}`} onClick={()=>{setCarIc(4), showGarage(false) }}>
-                       <FontAwesomeIcon icon={Icons[4]} />
-                    </div>
-                    <div className={`p-2 ${(carIc===6)?'text-orange-300':''}`} onClick={()=>{setCarIc(5), showGarage(false) }}>
-                       <FontAwesomeIcon icon={Icons[5]} />
-                    </div>
+                    {
+                        Icons.map((ele,i)=>i<6&&(
+                            <div className={`p-2 ${(i===carIc)?'text-orange-300':''}`} onClick={()=>{setCarIc(i), showGarage(false) }}>
+                                <FontAwesomeIcon icon={Icons[i]} />
+                            </div>)
+                        )
+                    }
                 </div>}
             </div>}
         </div>}

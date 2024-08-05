@@ -13,7 +13,7 @@ const keyboardButtons: string[] = [
 
 let coding: string[] = [" { ", " } ", " + "," * "," + "," ( "," ) "," = "," ; "," @ "," % "," > "," < ", " ] "," [ "," - "," & "];
 
-const map = new Map<number,number>([[0,80],[15,20],[30,110],[60,440],[100,680]]);
+const map = new Map<number,number>([[0,80],[15,20],[30,140],[60,480],[100,720]]);
 let punch: string[] = [", ",". ","! ",": ",`" `,`? `,`' `];
 const typeDiff: string[] = ["Simple","Punctuation","Numbers","Coding"];
 const typeDur: number[] = [15, 30, 60, 100];
