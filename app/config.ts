@@ -67,4 +67,39 @@ const generateWords = (diff: number, durpar: number, countDown: number) => {
   return shuffledArray;
 };
 
-export { generateWords };
+const reducer = (state:any, action:any)=>{
+  switch(action.type){
+    case 'setCaps':
+      return {...state, caps:action.payload};
+    case 'setWords':
+      return {...state, words:action.payload};
+    case 'setCursor':
+      return {...state, cursor:action.payload};
+    case 'setChange':
+      return {...state, change:action.payload};
+    case 'setTime':
+      return {...state, time:action.payload};
+    case 'setCountKey':
+      return {...state, countKey:action.payload};
+    case 'setScore':
+        return {...state, score:action.payload};
+    case 'setCorrect':
+      return {...state, correct:action.payload};
+    case 'setSeconds':
+      return {...state, seconds:action.payload};
+    case 'setWrongScore':
+      return {...state, wrongScore:action.payload};
+    case 'setLastIdx':
+      return {...state, lastIdx:action.payload};
+    case 'setWpm':
+      return {...state, wpm:action.payload};
+    case 'setBlur':
+      return {...state, blur:action.payload};
+    case 'setSpin':
+      return {...state, spin:action.payload};
+    default:
+      return action.payload;
+  }
+}
+
+export { generateWords, reducer};

@@ -1,5 +1,5 @@
 "use client"
-import { useState,useContext, useRef } from "react";
+import { useContext} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faClock, faBarsProgress, faKeyboard, faParagraph} from "@fortawesome/free-solid-svg-icons";
 import { messageData } from "../context";
@@ -7,8 +7,7 @@ import { myTheme, typeDiff, typeDur } from "../constant";
 
 const HomePage = () => {
     const contextValue = useContext(messageData);
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar} = contextValue!;
-    const [selectTheme, setSelectedTheme] = useState(false);
+    const {theme, countDown, setCountDown, diff, setDiff, begin,  setStart,  durpar} = contextValue!;
     return(
         <div className="w-full absolute select-none font-mono z-10">
         {(begin)?<div className="p-3 flex"><FontAwesomeIcon icon={faKeyboard} size="xl" /><p className="pl-4">TypeRiders</p></div>:<></>}

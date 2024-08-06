@@ -1,15 +1,12 @@
 "use client"
 import { Spotify } from "react-spotify-embed";
-import { useRouter } from 'next/navigation';
-import { useState,useContext} from "react";
+import { useContext} from "react";
 import { messageData } from "../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus} from "@fortawesome/free-solid-svg-icons";
-// className="h-40 absolute z-10"
 const MusicPlayer = () => {
-    const router = useRouter();
     const contextValue = useContext(messageData);
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm, setStopm} = contextValue!;
+    const {music, setMusic,  stopm, setStopm} = contextValue!;
     return(
         <>
          <button className={`border absolute w-6 h-6 left-0 rounded-full  hover:bg-white hover:text-black ${(music)?'z-50':'-z-50'} `} onClick={()=>setMusic(false)}>

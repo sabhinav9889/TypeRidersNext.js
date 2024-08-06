@@ -1,7 +1,7 @@
 import { faCarSide, faSailboat, faMotorcycle, faTruck, faTractor, faBiking, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const myTheme: string[] = ["bg-zinc-800", "bg-gray-800", "bg-orange-800", "bg-slate-800", "bg-gray-500", "bg-pink-800"];
-
+import { generateWords } from "./config";
 let Icons = [faCarSide, faMotorcycle, faBiking, faSailboat, faTractor, faTruck, faEye, faEyeSlash];
 
 const keyboardButtons: string[] = [
@@ -17,5 +17,8 @@ const map = new Map<number,number>([[0,80],[15,20],[30,140],[60,480],[100,720]])
 let punch: string[] = [", ",". ","! ",": ",`" `,`? `,`' `];
 const typeDiff: string[] = ["Simple","Punctuation","Numbers","Coding"];
 const typeDur: number[] = [15, 30, 60, 100];
+const initialStates= {
+    caps:false, words:"", cursor:0, change:0, time:false, countKey:0, score:-1, correct:0, seconds:0, wrongScore:0, lastIdx:0, wpm:0, blur:1,  spin:false,
+  }
 
-export {myTheme, keyboardButtons, coding, map, punch, Icons, typeDiff, typeDur};
+export {myTheme, keyboardButtons, coding, map, punch, Icons, typeDiff, typeDur, initialStates};
