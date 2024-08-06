@@ -36,9 +36,9 @@ export default function Home() {
           </div>
         </div>}
         {(start)&&<div className={`${(cur)?'':'cursor-none'} select-none`}>
-        {(!begin)&&<UpNav/>}
+        {(!begin&&diff!==4)&&<UpNav/>}
         <SinglePlayer/>
-        {(!begin)&&<DownNav/>}
+        {(!begin&&diff!==4)&&<DownNav/>}
         </div>}
       </main>
   );

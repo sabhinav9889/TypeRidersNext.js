@@ -278,7 +278,7 @@ const SinglePlayer = () => {
            </div>:<></>
         } 
       </div>
-      <Car per={wpm.toFixed(2)} spin={spin} begin={begin}/>
+      {(diff!==4)&&<Car per={wpm.toFixed(2)} spin={spin} begin={begin}/>}
       {(diff==4)&&<Profile/>}
     </div>
         <MusicPlayer/>
