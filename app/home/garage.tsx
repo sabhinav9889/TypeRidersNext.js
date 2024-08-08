@@ -1,9 +1,9 @@
 "use client"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {useState,  useContext} from "react";
+import {useContext} from "react";
 import {messageData} from "../context";
 import { Icons } from "../constant";
-const garage = ()=>{
+const Garage = ()=>{
     const contextValue = useContext(messageData);
     const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur, drawer, setDrawer, livewpm, setlivewpm, sound ,setSound, gar, setGarage, carIc, setCarIc} = contextValue!;
     return(
@@ -24,4 +24,4 @@ const garage = ()=>{
     )
 }
 
-export default garage;
+export default Garage;
