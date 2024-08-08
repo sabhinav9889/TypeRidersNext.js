@@ -5,11 +5,12 @@ import { useContext, useRef, useState} from "react";
 import {messageData} from "./context";
 import Head from "next/head";
 import DownNav from "./home/downNav";
-
+import Slider from './home/slider';
+import Garage from './home/garage';
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);
   const contextValue = useContext(messageData);
-  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur} = contextValue!;
+  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur, drawer, setDrawer, profile, gar} = contextValue!;
   const handleContextMenu = (event: Event) => {
     event.preventDefault();
   };
@@ -36,9 +37,11 @@ export default function Home() {
           </div>
         </div>}
         {(start)&&<div className={`${(cur)?'':'cursor-none'} select-none`}>
-        {(!begin&&diff!==4)&&<UpNav/>}
-        <SinglePlayer/>
-        {(!begin&&diff!==4)&&<DownNav/>}
+        {(!profile)&&<UpNav/>}
+          {(!gar)&&<SinglePlayer/>}
+          <Slider/>
+          {(gar)&&<Garage/>}
+        {(!begin&&!profile&&!gar)&&<DownNav/>}
         </div>}
       </main>
   );

@@ -1,8 +1,7 @@
-import { faCarSide, faSailboat, faMotorcycle, faTruck, faTractor, faBiking, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faCarSide, faSailboat, faMotorcycle, faTruck, faTractor, faBiking, faEye, faEyeSlash, faHorse } from "@fortawesome/free-solid-svg-icons";
 
-const myTheme: string[] = ["bg-zinc-800", "bg-gray-800", "bg-orange-800", "bg-slate-800", "bg-gray-500", "bg-pink-800"];
-import { generateWords } from "./config";
-let Icons = [faCarSide, faMotorcycle, faBiking, faSailboat, faTractor, faTruck, faEye, faEyeSlash];
+const myTheme: string[] = ["bg-zinc-800", "bg-gray-800", "bg-orange-800", "bg-slate-800", "bg-slate-400", "bg-pink-800"];
+let Icons = [faCarSide, faMotorcycle, faBiking, faSailboat, faTractor, faTruck];
 
 const keyboardButtons: string[] = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",

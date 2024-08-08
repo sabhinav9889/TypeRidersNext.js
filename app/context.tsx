@@ -24,6 +24,18 @@ interface ValueProps {
     setStopm: Dispatch<SetStateAction<boolean>>;
     cur: boolean;
     setCur: Dispatch<SetStateAction<boolean>>;
+    drawer: boolean;
+    setDrawer: Dispatch<SetStateAction<boolean>>;
+    livewpm: boolean;
+    setlivewpm: Dispatch<SetStateAction<boolean>>;
+    profile: boolean;
+    setProfile: Dispatch<SetStateAction<boolean>>;
+    sound: boolean;
+    setSound: Dispatch<SetStateAction<boolean>>;
+    gar: boolean;
+    setGarage: Dispatch<SetStateAction<boolean>>;
+    carIc: number;
+    setCarIc: Dispatch<SetStateAction<number>>;
 }
 
 // Step 3: Create the context provider component
@@ -37,7 +49,13 @@ const Context: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [durpar, setDurPar] = useState<number>(1);
     const [stopm, setStopm] = useState<boolean>(true);
     const [cur, setCur] = useState<boolean>(true);
-    const value: ValueProps = { theme, setTheme , countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm ,setStopm, cur, setCur};
+    const [drawer, setDrawer] = useState<boolean>(false);
+    const [livewpm, setlivewpm] = useState<boolean>(true);
+    const [profile, setProfile] = useState<boolean>(false);
+    const [sound, setSound] = useState<boolean>(true);
+    const [gar, setGarage] = useState<boolean>(false);
+    const [carIc, setCarIc] = useState<number>(0);
+    const value: ValueProps = { theme, setTheme , countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm ,setStopm, cur, setCur, drawer, setDrawer, livewpm, setlivewpm, profile, setProfile, sound, setSound, gar, setGarage, carIc, setCarIc};
     return (
         <messageData.Provider value={value}>
             {children}

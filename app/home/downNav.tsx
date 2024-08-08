@@ -6,12 +6,12 @@ import { messageData } from "../context";
 import {myTheme} from '../constant';
 const DownNav = () => {
     const contextValue = useContext(messageData);
-    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm, setStopm} = contextValue!;
+    const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm, setStopm, setProfile} = contextValue!;
     const [selectTheme, setSelectedTheme] = useState(false);
     return(
         <div className={`grid md:grid-cols-7 grid-cols-6 absolute z-10 bottom-0 w-full ${myTheme[theme]}  text-orange-300 cursor-pointer`}>
         <div className="flex col-span-3">
-            <div className={`${(diff===4)?'text-white':'text-orange-300'} mt-3 md:ml-12 flex text-lg ml-2 md:text-2xl`} onClick={()=>setDiff((prev)=>(prev===4)?0:4)}><FontAwesomeIcon icon={faAddressCard} /><p className="ml-2 text-sm md:text-lg">Profile</p></div>
+            <div className={`${(diff===4)?'text-white':'text-orange-300'} mt-3 md:ml-12 flex text-lg ml-2 md:text-2xl`} onClick={()=>setProfile((prev)=>(prev)?false:true)}><FontAwesomeIcon icon={faAddressCard} /><p className="ml-2 text-sm md:text-lg">Profile</p></div>
             <div className={`p-2 md:ml-3 w-28 text-sm md:text-lg  mt-1 ${(!stopm)?'text-white':''}`}><p onClick={()=>{setMusic(true); setStopm(false)}}><FontAwesomeIcon icon={faMusic}/><span className="ml-2">Music</span></p></div>
         </div>
             <div className="flex lg:col-span-2 col-span-4">

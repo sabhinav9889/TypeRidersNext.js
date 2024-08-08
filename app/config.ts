@@ -102,4 +102,19 @@ const reducer = (state:any, action:any)=>{
   }
 }
 
-export { generateWords, reducer};
+const keySound = (event: any) => {
+    // if(event.key===" "){
+      const audio = new Audio("/spacebar-click-keyboard-199448.mp3");
+      audio.play();
+    // }
+    // else if(event.key==="Backspace"){
+    //   const audio = new Audio("/79932-PC_keyboard_press_backspace_computer-BLASTWAVEFX-16508.wav");
+    //   audio.play();
+    // }
+    // else{
+    //   const audio = new Audio("/mech-keyboard-02-102918.mp3");
+    //   audio.play();
+    // }
+};
+
+export { generateWords, reducer, keySound};

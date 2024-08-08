@@ -8,11 +8,11 @@ import MusicPlayer from "./spotify";
 import Graph from './graph';
 import Profile from "./profile";
 import { keyboardButtons , initialStates} from "../constant";
-import { generateWords, reducer } from "../config";
+import { generateWords, reducer, keySound } from "../config";
 
 const SinglePlayer = () => {
   const contextValue = useContext(messageData);
-  const { countDown, diff,  begin, setBegin,  durpar,  setCur} = contextValue!;
+  const { countDown, diff,  begin, setBegin,  durpar,  setCur, livewpm, profile, setDrawer, sound} = contextValue!;
   initialStates.words = generateWords(diff, durpar, countDown);
   initialStates.seconds = countDown;
   const [state, dispatch] = useReducer(reducer, initialStates);
@@ -100,6 +100,7 @@ const SinglePlayer = () => {
   }, [blur]);
   const handleKeyDown = (event: any) => {
     if(score!==-1) return;
+    if(sound) keySound(event);
     if(!isMobile()) dispatch({type:"setCaps",payload:event.getModifierState('CapsLock')});
     let eventKey = event.key;
     setBegin(true);
@@ -186,6 +187,9 @@ const SinglePlayer = () => {
       }
     }
     if(eventKey!==words[cursor]){
+      if(sound){const audio = new Audio("/error-8-206492.mp3");
+      audio.play();
+      }
       setWrongSet((set)=>set?.add(cursor));
       setIsWrong((st)=>{ st?.add(cursor); return st;});
       if(passage){
@@ -225,8 +229,8 @@ const SinglePlayer = () => {
   
   return (
     <>
-     <div className={`w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} role="main" onKeyDown={(e)=>handleKeyDown(e)}>
-      <div className={`${diff===4?'hidden':'flex'} justify-center items-center`}>
+     <div className={`w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} role="main" onKeyDown={(e)=>handleKeyDown(e)} onClick={()=>setDrawer(false)}>
+      <div className={`${profile?'hidden':'flex'} justify-center items-center`}>
         {(score===-1)&&
         <div className="sm:p-32 p-12 h-auto">
           <div className="text-orange-400 mb-4 sm:mt-0 mt-12 flex font-semibold justify-center md:justify-normal">
@@ -278,8 +282,8 @@ const SinglePlayer = () => {
            </div>:<></>
         } 
       </div>
-      {(diff!==4)&&<Car per={wpm.toFixed(2)} spin={spin} begin={begin}/>}
-      {(diff==4)&&<Profile/>}
+      {(livewpm&&!profile)&&<Car per={wpm.toFixed(2)} spin={spin} begin={begin}/>}
+      {(profile)&&<Profile/>}
     </div>
         <MusicPlayer/>
     </>
