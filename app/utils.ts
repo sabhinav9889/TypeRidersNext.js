@@ -93,8 +93,6 @@ const reducer = (state:any, action:any)=>{
       return {...state, lastIdx:action.payload};
     case 'setWpm':
       return {...state, wpm:action.payload};
-    case 'setBlur':
-      return {...state, blur:action.payload};
     case 'setSpin':
       return {...state, spin:action.payload};
     default:

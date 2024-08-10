@@ -42,7 +42,7 @@ const Profile = () => {
     //    }
     // }
     return(
-        <div className="hidden sm:block min-h-screen">
+        <div className="min-h-screen">
             <button className="border absolute mt-12 w-12 h-8 rounded-md ml-12 hover:h-9" onClick={()=>setProfile(false)}>X</button>
             <div className="w-full flex justify-center font-mono text-lg">
                 <div className="p-24">
@@ -59,7 +59,7 @@ const Profile = () => {
                         </form>}
                         </div> */}
                     </div>
-                    <div className="grid grid-cols-2 mt-12">
+                    <div className="sm:grid grid-cols-2 mt-12">
                         <p className="p-4">UserName : {userName}</p>
                         <p className="p-4">User Email : {userEmail}</p>
                         <p className="p-4">Avg. WPM : {avgWpm}</p>

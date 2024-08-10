@@ -10,12 +10,12 @@ import Garage from './home/garage';
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);
   const contextValue = useContext(messageData);
-  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur, drawer, setDrawer, profile, gar} = contextValue!;
+  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur, drawer, setDrawer, profile, gar, blur ,setBlur} = contextValue!;
   const handleContextMenu = (event: Event) => {
     event.preventDefault();
   };
   if(themeSet.current){
-    themeSet.current.addEventListener('mousemove',()=>setCur(true));
+    themeSet.current.addEventListener('mousemove',()=>{setCur(true);});
     themeSet.current.addEventListener('contextmenu', handleContextMenu);
     if(theme===0){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.add("bg-neutral-950"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
     else if(theme===1){ themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-gray-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100");}

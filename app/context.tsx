@@ -34,6 +34,8 @@ interface ValueProps {
     setSound: Dispatch<SetStateAction<boolean>>;
     gar: boolean;
     setGarage: Dispatch<SetStateAction<boolean>>;
+    blur: boolean;
+    setBlur: Dispatch<SetStateAction<boolean>>;
     carIc: number;
     setCarIc: Dispatch<SetStateAction<number>>;
 }
@@ -54,8 +56,9 @@ const Context: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [profile, setProfile] = useState<boolean>(false);
     const [sound, setSound] = useState<boolean>(true);
     const [gar, setGarage] = useState<boolean>(false);
+    const [blur, setBlur] = useState<boolean>(true);
     const [carIc, setCarIc] = useState<number>(0);
-    const value: ValueProps = { theme, setTheme , countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm ,setStopm, cur, setCur, drawer, setDrawer, livewpm, setlivewpm, profile, setProfile, sound, setSound, gar, setGarage, carIc, setCarIc};
+    const value: ValueProps = { theme, setTheme , countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, music, setMusic, durpar, setDurPar, stopm ,setStopm, cur, setCur, drawer, setDrawer, livewpm, setlivewpm, profile, setProfile, sound, setSound, gar, setGarage, carIc, setCarIc, blur, setBlur};
     return (
         <messageData.Provider value={value}>
             {children}

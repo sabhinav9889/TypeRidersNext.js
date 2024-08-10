@@ -8,15 +8,16 @@ import MusicPlayer from "./spotify";
 import Graph from './graph';
 import Profile from "./profile";
 import { keyboardButtons , initialStates} from "../constant";
-import { generateWords, reducer, keySound } from "../config";
+import { generateWords, reducer, keySound } from "../utils";
 
 const SinglePlayer = () => {
   const contextValue = useContext(messageData);
-  const { countDown, diff,  begin, setBegin,  durpar,  setCur, livewpm, profile, setDrawer, sound} = contextValue!;
+  const { countDown, diff,  begin, setBegin,  durpar,  setCur, livewpm, profile, setDrawer, sound, blur ,setBlur} = contextValue!;
   initialStates.words = generateWords(diff, durpar, countDown);
   initialStates.seconds = countDown;
   const [state, dispatch] = useReducer(reducer, initialStates);
-  const {caps, words, cursor, change, time, countKey, score, correct, seconds, wrongScore, lastIdx, wpm, blur, spin} = state;
+  // dispatch({type:"setSeconds",payload:countDown});
+  const {caps, words, cursor, change, time, countKey, score, correct, seconds, wrongScore, lastIdx, wpm, spin} = state;
   const text = useRef(null);
   const mainDiv = useRef(null);
   const [passage, setPassage] = useState<React.ReactNode[] | null>([]);
@@ -34,6 +35,7 @@ const SinglePlayer = () => {
     setIsWrong((st)=>{ st.clear(); return st; });
     setGraph([]);
     setWrongSet((set)=>{set.clear(); return set;});
+    setBlur(true);
     dispatch({type:"default", payload:initialStates});
     if(text.current){ 
       const element =  text.current as HTMLInputElement;
@@ -93,7 +95,7 @@ const SinglePlayer = () => {
     setPassage(ans);
   }, [begin]);
   useEffect(() => {
-    if(mainDiv.current&&blur===0){  
+    if(mainDiv.current&&!blur){  
       const element = mainDiv.current as HTMLInputElement;
       element.focus();
     }
@@ -150,8 +152,8 @@ const SinglePlayer = () => {
     }
     if(cursor===words.length) return;
     if(!keyboardButtons.includes(eventKey))  return;
-    if(blur===1){
-      dispatch({type:"setBlur",payload:0});
+    if(blur){
+      setBlur(false);
       if(text.current){  
         const element = text.current as HTMLInputElement;
         element.style.filter='none'; 
@@ -245,12 +247,12 @@ const SinglePlayer = () => {
             </span>
           </div>
           <div className="flex justify-center items-center">
-            <div className="overflow-hidden text-2xl sm:h-24 h-32 sm:w-3/4 w-64" onClick={()=>{ dispatch({type:"setBlur",payload:0}); setBegin(true); setCur(false); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';}} }>
+            <div className="overflow-hidden text-2xl sm:h-24 h-32 sm:w-3/4 w-64" onClick={()=>{if(cursor===0&&blur) dispatch({type:"setWords",payload:generateWords(diff, durpar, countDown)}); setBlur(false); setBegin(true);  setCur(false); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';}} }>
               <div className="flex justify-center">{(blur)?<p className="absolute z-10 mt-8 font-mono  text-sm" ref={blurP}>Click here or press any key to focus</p>:<div className="hidden">Hello</div>}</div>
-                <div className={`overflow-hidden font-mono ${(blur)?'blur-sm':''}`} ref={text} onClick={()=>{ dispatch({type:"setBlur",payload:0}); setCur(false); setBegin(true); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';} dispatch({type:"setChange",payload:change+1});}} >
+                <div className={`overflow-hidden font-mono ${(blur)?'blur-sm':''}`} ref={text} onClick={()=>{ setBlur(false); setCur(false); setBegin(true); if(text.current){ const ele = text.current as HTMLInputElement; ele.style.filter='none';} dispatch({type:"setChange",payload:change+1});}} >
                 {passage}
                 </div>
-              <input type="text"  className="absolute w-64 h-32 sm:hidden top-20 opacity-0" onClick={()=>{ dispatch({type:"setBlur",payload:0}); setCur(false); setBegin(true);}} onChange={(e)=>{  handleKeyDown(e);   e.target.value=""}}/> 
+              <input type="text"  className="absolute w-64 h-32 sm:hidden top-20 opacity-0" onClick={()=>{ setBlur(false); setCur(false); setBegin(true);}} onChange={(e)=>{  handleKeyDown(e);   e.target.value=""}}/> 
             </div>
           </div>
           <div className="flex justify-center text-black">
@@ -264,7 +266,7 @@ const SinglePlayer = () => {
         </div>}
         {(score!==-1)?
           <div className="">
-            <div className="flex justify-center sm:mt-44 xl:mt-4 lg:mt-80 mt-10 w-full">
+            <div className="flex justify-center sm:mt-44 lg:mt-4 mt-10 w-full">
               <div className="flex text-orange-300 mb-4 sm:text-2xl"><p className="p-4 justify-center">Accuracy - {score.toFixed(2)} %</p><p className="p-4 flex justify-center">WPM - {wpm.toFixed(2)}</p></div>
               <div className="flex justify-center text-black"></div>
             </div>
