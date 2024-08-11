@@ -12,7 +12,7 @@ import { generateWords, reducer, keySound } from "../utils";
 
 const SinglePlayer = () => {
   const contextValue = useContext(messageData);
-  const { countDown, diff,  begin, setBegin,  durpar,  setCur, livewpm, profile, setDrawer, sound, blur ,setBlur} = contextValue!;
+  const { countDown, diff,  begin, setBegin,  durpar,  setCur, livewpm, profile, setDrawer, sound, blur ,setBlur, gar} = contextValue!;
   initialStates.words = generateWords(diff, durpar, countDown);
   initialStates.seconds = countDown;
   const [state, dispatch] = useReducer(reducer, initialStates);
@@ -105,8 +105,6 @@ const SinglePlayer = () => {
     if(sound) keySound(event);
     if(!isMobile()) dispatch({type:"setCaps",payload:event.getModifierState('CapsLock')});
     let eventKey = event.key;
-    setBegin(true);
-    setCur(false);
     if(eventKey==='Unidentified'||eventKey===undefined){
       eventKey = event.target.value;
     }
@@ -152,6 +150,8 @@ const SinglePlayer = () => {
     }
     if(cursor===words.length) return;
     if(!keyboardButtons.includes(eventKey))  return;
+    setBegin(true);
+    setCur(false);
     if(blur){
       setBlur(false);
       if(text.current){  
@@ -231,8 +231,8 @@ const SinglePlayer = () => {
   
   return (
     <>
-     <div className={`w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} role="main" onKeyDown={(e)=>handleKeyDown(e)} onClick={()=>setDrawer(false)}>
-      <div className={`${profile?'hidden':'flex'} justify-center items-center`}>
+     <div className={`${(profile||gar)?'hidden':'block'} w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} role="main" onKeyDown={(e)=>handleKeyDown(e)} onClick={()=>setDrawer(false)}>
+      <div className={`flex justify-center items-center`}>
         {(score===-1)&&
         <div className="sm:p-32 p-12 h-auto">
           <div className="text-orange-400 mb-4 sm:mt-0 mt-12 flex font-semibold justify-center md:justify-normal">

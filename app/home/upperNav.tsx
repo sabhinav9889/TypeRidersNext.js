@@ -7,7 +7,7 @@ import { myTheme, typeDiff, typeDur } from "../constant";
 
 const HomePage = () => {
     const contextValue = useContext(messageData);
-    const {theme, countDown, setCountDown, diff, setDiff, begin,  setStart,  durpar, drawer, setDrawer, gar} = contextValue!;
+    const {theme, countDown, setCountDown, diff, setDiff, begin,  setStart,  durpar, drawer, setDrawer, gar, music} = contextValue!;
     return(
         <div className="flex">
         <div className="w-full absolute select-none font-mono z-10">
@@ -34,7 +34,7 @@ const HomePage = () => {
                 </div>}
             </div>}
         </div>
-        <div className="p-2 flex justify-end absolute z-50 right-0 w-12">
+        <div className={`p-2 ${(music)?'hidden':'flex'} justify-end absolute z-50 right-0 w-12`}>
           <FontAwesomeIcon icon={faGear} size="xl" className={`cursor-pointer mt-2 ${(drawer)?'text-white':'text-orange-300'} transform transition-transform hover:rotate-180`} onClick={()=>setDrawer((prev)=>(prev)?false:true)}/>
         </div>
         </div>

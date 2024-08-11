@@ -10,7 +10,7 @@ import Garage from './home/garage';
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);
   const contextValue = useContext(messageData);
-  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart, cur, setCur, drawer, setDrawer, profile, gar, blur ,setBlur} = contextValue!;
+  const {theme, setTheme, countDown, setCountDown, diff, setDiff, begin, setBegin, start, setStart,music, cur, setCur, drawer, setDrawer, profile, gar, blur ,setBlur} = contextValue!;
   const handleContextMenu = (event: Event) => {
     event.preventDefault();
   };
@@ -38,8 +38,8 @@ export default function Home() {
         </div>}
         {(start)&&<div className={`${(cur)?'':'cursor-none'} select-none`}>
         {(!profile)&&<UpNav/>}
-          {(!gar)&&<SinglePlayer/>}
-          <Slider/>
+          {<SinglePlayer/>}
+          {(!music)&&<Slider/>}
           {(gar)&&<Garage/>}
         {(!begin&&!profile&&!gar)&&<DownNav/>}
         </div>}
