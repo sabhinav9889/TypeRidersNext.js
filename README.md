@@ -22,7 +22,7 @@ bun dev
 ![Screenshot (314)](https://github.com/user-attachments/assets/938b2129-6128-4337-83fa-5f9828909cfb)
 ![Screenshot (315)](https://github.com/user-attachments/assets/7469e5b4-6f60-4618-94eb-3be5b78af4ec)
 ![Screenshot (316)](https://github.com/user-attachments/assets/0d33fa61-46f4-42e1-a7e6-f14f4149e04e)
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [[http://localhost:3000](https://typeridersnext1.netlify.app/))]([http://localhost:3000](https://typeridersnext1.netlify.app/))) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
