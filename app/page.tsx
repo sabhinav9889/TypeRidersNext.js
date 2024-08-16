@@ -7,6 +7,7 @@ import Head from "next/head";
 import DownNav from "./home/downNav";
 import Slider from './home/slider';
 import Garage from './home/garage';
+import { bgList, textList } from "./constant";
 export default function Home() {
   const themeSet = useRef<HTMLDivElement>(null);
   const contextValue = useContext(messageData);
@@ -17,12 +18,12 @@ export default function Home() {
   if(themeSet.current){
     themeSet.current.addEventListener('mousemove',()=>{setCur(true);});
     themeSet.current.addEventListener('contextmenu', handleContextMenu);
-    if(theme===0){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.add("bg-neutral-950"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
-    else if(theme===1){ themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-gray-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100");}
-    else if(theme===2){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-orange-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
-    else if(theme===3){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-slate-900");  themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100");}
-    else if(theme===4){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-pink-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.add("bg-pink-200"); themeSet.current.classList.remove("text-gray-100"); themeSet.current.classList.add("text-black"); }
-    else if(theme===5){ themeSet.current.classList.remove("bg-gray-900"); themeSet.current.classList.remove("bg-orange-900"); themeSet.current.classList.remove("bg-slate-900"); themeSet.current.classList.remove("bg-neutral-950"); themeSet.current.classList.remove("bg-pink-200"); themeSet.current.classList.add("bg-pink-900"); themeSet.current.classList.remove("text-black"); themeSet.current.classList.add("text-gray-100"); }
+    for(let i=0; i<bgList.length; i++){
+      if(theme===i) themeSet.current.classList.add(bgList[i]);
+      else themeSet.current.classList.remove(bgList[i]);
+      if(theme===4){ if(i===4) themeSet.current.classList.add(textList[1]); else  themeSet.current.classList.remove(textList[0]); }
+      else{ if(i===theme) themeSet.current.classList.add(textList[0]); else themeSet.current.classList.remove(textList[1]); }
+    }
   }
   return (
       <main className={`${(!start)?'bg-covers bg-center':' bg-orange-900 '} text-gray-100 min-h-screen`} ref={themeSet} style={{backgroundImage: `${(!start)?'url("/2bde7d14133968f97d6c4dd898edb989.gif")':'none'}`}}>

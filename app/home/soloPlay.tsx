@@ -231,8 +231,8 @@ const SinglePlayer = () => {
   
   return (
     <>
-     <div className={`${(profile||gar)?'hidden':'block'} w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} role="main" onKeyDown={(e)=>handleKeyDown(e)} onClick={()=>setDrawer(false)}>
-      <div className={`flex justify-center items-center`}>
+     <div className={`${(gar)?'hidden':'block'} w-full min-h-screen select-none absolute`} ref={mainDiv} tabIndex={0} role="main" onKeyDown={(e)=>handleKeyDown(e)} onClick={()=>setDrawer(false)}>
+      <div className={`${(profile||gar)?'hidden':'block'} flex justify-center items-center`}>
         {(score===-1)&&
         <div className="sm:p-32 p-12 h-auto">
           <div className="text-orange-400 mb-4 sm:mt-0 mt-12 flex font-semibold justify-center md:justify-normal">

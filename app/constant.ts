@@ -18,6 +18,7 @@ const typeDiff: string[] = ["Simple","Punctuation","Numbers","Coding"];
 const typeDur: number[] = [15, 30, 60, 100];
 const initialStates= {
     caps:false, words:"", cursor:0, change:0, time:false, countKey:0, score:-1, correct:0, seconds:0, wrongScore:0, lastIdx:0, wpm:0,  spin:false,
-  }
-
-export {myTheme, keyboardButtons, coding, map, punch, Icons, typeDiff, typeDur, initialStates};
+}
+const bgList = ["bg-neutral-950","bg-gray-900","bg-orange-900", "bg-slate-900", "bg-pink-200", "bg-pink-900"];
+const textList = ["text-gray-100", "text-black"];
+export {myTheme, keyboardButtons, coding, map, punch, Icons, typeDiff, typeDur, initialStates, bgList, textList};
