@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        blackTheme: '#3A3A3A',
+        whiteTheme: '#A0A0A0',
+        blackBg: '#1E1E1E',
+      },
       cursor: {
         'none': 'none',
       },
