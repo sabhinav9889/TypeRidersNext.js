@@ -22,7 +22,7 @@ const Slider = ()=>{
               </div>
               <p className="md:pl-4 pr-4 md:text-lg text-orange-200">Sound </p>
             </div>
-            <div className={`w-full mt-16 ml-2 flex justify-centre ${gar?'':'text-orange-200'}`}><FontAwesomeIcon className="mt-2" size="xl" icon={Icons[0]}/><p className={`ml-2  cursor-pointer text-lg  p-2`} onClick={()=>setGarage((prev)=>(prev)?false:true)}>Garage</p></div>
+            <div className={`w-full mt-16 ml-2 md:flex justify-centre ${gar?'':'text-orange-200'}`}><FontAwesomeIcon className="mt-2" size="xl" icon={Icons[0]}/><p className={`md:ml-2  cursor-pointer text-lg  md:p-2`} onClick={()=>setGarage((prev)=>(prev)?false:true)}>Garage</p></div>
           </div>
           </div>
          <div onClick={()=>setDrawer(false)}></div>

@@ -13,10 +13,10 @@ const Profile = () => {
     const matchPlayed = 128;
     const {setProfile} = contextValue!;
     return(
-        <div className="min-h-screen">
+        <div className="min-h-screen w-full">
             <button className="border absolute mt-12 w-12 h-8 rounded-md ml-12 hover:h-9" onClick={()=>setProfile(false)}>X</button>
             <div className="w-full flex justify-center font-mono text-lg">
-                <div className="p-24">
+                <div className="sm:p-24 p-12">
                     <div className="sm:grid grid-cols-2 mt-12">
                         <p className="p-4">UserName : {userName}</p>
                         <p className="p-4">User Email : {userEmail}</p>
