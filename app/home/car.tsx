@@ -15,7 +15,7 @@ const Car = ({per, spin}:any)=>{
         setWid(Number(element.offsetWidth));
     }
     return(
-        <div className="absolute w-full z-10 top-80 sm:top-96 sm:mt-28" ref={getWidth}>
+        <div className="absolute w-full z-10 top-80 mt-8 sm:top-96 sm:mt-28" ref={getWidth}>
         <div>
             <div className="flex">
                <div className="mb-1 cursor-pointer"></div><p className="ml-2">WPM : {per }</p>

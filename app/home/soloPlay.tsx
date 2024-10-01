@@ -236,7 +236,7 @@ const SinglePlayer = () => {
         {(score===-1)&&
         <div className="sm:p-32 p-12 h-auto">
           <div className="text-orange-400 mb-4 sm:mt-0 mt-12 flex font-semibold justify-center md:justify-normal">
-            <span className="absloute z-20 w-1/5 flex justify-end ">{seconds} sec</span>
+            <span className="absloute z-20 w-1/4 sm:w-1/5 flex justify-end ">{seconds} sec</span>
             <span className="sm:flex  w-full justify-end hidden">
             {(caps)&&
               <span className="flex absloute z-10 shadow-lg text-yellow-200">
