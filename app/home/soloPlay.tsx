@@ -267,7 +267,7 @@ const SinglePlayer = () => {
         {(score!==-1)?
           <div className="">
             <div className="flex justify-center sm:mt-44 lg:mt-4 mt-10 w-full">
-              <div className="flex text-orange-300 mb-4 sm:text-2xl"><p className="p-4 justify-center">Accuracy - {score.toFixed(2)} %</p><p className="p-4 flex justify-center">WPM - {wpm.toFixed(2)}</p></div>
+              <div className="flex text-orange-300 mb-4 sm:text-2xl"><p className="p-4 justify-center">Accuracy - {score.toFixed(2)} %</p><p className="p-4 flex justify-center">WPM - {wpmList[wpmList.length-1]}</p></div>
               <div className="flex justify-center text-black"></div>
             </div>
             <div className="w-full flex justify-center sm:mt-0 mt-12">
@@ -284,7 +284,7 @@ const SinglePlayer = () => {
            </div>:<></>
         } 
       </div>
-      {(livewpm&&!profile)&&<Car per={wpm.toFixed(2)} spin={spin} begin={begin}/>}
+      {(livewpm&&!profile)&&<Car per={(wpmList.length)?wpmList[wpmList.length-1]:0} spin={spin} begin={begin}/>}
       {(profile)&&<Profile/>}
     </div>
         <MusicPlayer/>
