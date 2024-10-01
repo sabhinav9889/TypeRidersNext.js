@@ -67,7 +67,7 @@ const SinglePlayer = () => {
       dispatch({type:"setWpm",payload:(correct/(countDown-seconds)*60)});
       if(wpm){ 
         setGraph((prev)=>[...prev, countDown-seconds]);
-        setWpmList((prev)=>[...prev, wpm]);
+        setWpmList((prev)=>[...prev, wpm.toFixed(2)]);
       }
       if(seconds===0){
         const accuracy = ((countKey-wrongScore)/countKey)*100;
